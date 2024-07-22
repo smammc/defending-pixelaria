@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Defenders of Pixelaria</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main>
+      <div id="intro-screen">
+        <img
+          id="start-button-img"
+          src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/4fbb51d3-af0b-4d9b-b432-bd18d8377a0d/df988jf-70faa844-ce78-4f0e-a17a-c367ff901585.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzRmYmI1MWQzLWFmMGItNGQ5Yi1iNDMyLWJkMThkODM3N2EwZFwvZGY5ODhqZi03MGZhYTg0NC1jZTc4LTRmMGUtYTE3YS1jMzY3ZmY5MDE1ODUucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.kvEPeaWVRgz8M4zbpOStu7ZfnMP9CVDEFJZF5b90JB4"
+        />
+        <div class="instructions-button-div">
+          <img
+            id="instructions-button"
+            src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/4fbb51d3-af0b-4d9b-b432-bd18d8377a0d/df988jf-70faa844-ce78-4f0e-a17a-c367ff901585.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzRmYmI1MWQzLWFmMGItNGQ5Yi1iNDMyLWJkMThkODM3N2EwZFwvZGY5ODhqZi03MGZhYTg0NC1jZTc4LTRmMGUtYTE3YS1jMzY3ZmY5MDE1ODUucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.kvEPeaWVRgz8M4zbpOStu7ZfnMP9CVDEFJZF5b90JB4"
+          />
+          <img
+            id="instructions-img"
+            src="data:image/jpeg;base64,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"
+          />
+        </div>
+      </div>
+      <!-- separation -->
+      <!-- separation -->
+      <!-- separation -->
+      <!-- separation -->
+      <!-- separation -->
+      <!-- separation -->
+      <!-- separation -->
+
+      <div class="game-screen">
+        <div class="enemy">
+          <img
+            class="enemy"
+            src="https://static.vecteezy.com/system/resources/previews/019/974/822/original/pixel-art-flying-dragon-dragon-pixel-illustration-cartoon-monster-pixel-design-free-vector.jpg"
+          />
+        </div>
+        <div class="card-inventory">
+          <div id="card-holder" class="cards">
+            <div class="cards" id="knight-card">
+              <img
+                class="cards-img"
+                id="knight-img"
+                src="https://w7.pngwing.com/pngs/790/698/png-transparent-digital-art-knight-pixel-text-fictional-character-technology-thumbnail.png"
+              />
+            </div>
+
+            <div class="cards" id="mage-card">
+              <img
+                class="cards-img"
+                id="mage-img"
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvmP1X_Hgub6NOSlMART9hLOv3PBjbFywzNg&s"
+              />
+            </div>
+            <div class="cards" id="ogre-card">
+              <img
+                class="cards-img"
+                id="ogre-img"
+                src="https://as1.ftcdn.net/v2/jpg/02/70/45/36/1000_F_270453616_8YjH6nG0dE0eMpHRsqDMKIgDmCH6a52Z.jpg"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- card screens to access on event-listener-->
+      <!-- card screens to access on event-listener-->
+      <!-- card screens to access on event-listener-->
+      <!-- card screens to access on event-listener-->
+      <!-- card screens to access on event-listener-->
+      <div id="mage-screen"></div>
+      <div id="ogre-screen"></div>
+    </main>
+
+    <script src="game.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
