@@ -1,24 +1,38 @@
 class Card {
   //prettier-ignore
-  constructor(name, attack, defense, elementToPlace, width, height, imgSrc, health) {
+  constructor(name, attack, health, elementToAppend, imgSrc) {
     this.name = name;
     this.attack = attack;
-    this.defense = defense;
-    this.elementToPlace = elementToPlace;
-    this.width = width;
-    this.height = height;
     this.health = health;
+    this.elementToAppend = elementToAppend;
+    this.width = 150;
+    this.height = 165;
 
     // Add variables to store the position of the card on the screen.
 
-   /*  // Create the card img element
+    let cardContainer = document.createElement("div");
+    cardContainer.setAttribute("id", `${this.name}`)
+    cardContainer.setAttribute("class", "card-holder-class")
+
+    let nameContainer = document.createElement("div");
+    let imageContainer = document.createElement("img");
+    let healthContainer = document.createElement("div");
+
+    cardContainer.appendChild(nameContainer);
+    cardContainer.appendChild(imageContainer);
+    cardContainer.appendChild(healthContainer);
+
+    this.elementToAppend.appendChild(cardContainer);
+
+    // Create the card img element
     this.element = document.createElement("img");
     // Set the img src, position, width and height
+    this.elementToAppend.createElement("div")
     this.element.src = imgSrc;
     this.element.position = "absolute";
     this.element.width = `${width}px`;
     this.element.height = `${height}px`;
-    this.gameScreen.appendChild(this.element); */
+    this.gameScreen.appendChild(this.element);
 
     let enemyUnit = document.getElementById("enemy-div");
     updateCurrentHealth();
