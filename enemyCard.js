@@ -1,4 +1,4 @@
-class EnemyCard /* extends Card */ {
+/* class EnemyCard  {
   constructor(
     name,
     attack,
@@ -7,9 +7,9 @@ class EnemyCard /* extends Card */ {
     width,
     height,
     imgSrc,
-    health //prettier-ignore
-  ) {}
-  /*   super(name, attack, defense, gameScreen, width, height, imgSrc, health);
+    health 
+  ) {
+    super(name, attack, defense, gameScreen, width, height, imgSrc, health);
     this.name = name;
     this.attack = attack;
     this.defense = defense;
@@ -17,15 +17,15 @@ class EnemyCard /* extends Card */ {
     this.width = width;
     let enemyUnit = document.getElementById("enemy-div");
     updateCurrentHealth();
-  }
+  } */
 
-  // Characteristics that belong only to the enemyCard
+// Characteristics that belong only to the enemyCard
 
-  updateCurrentHealth() {
+/*  updateCurrentHealth() {
     const enemyCurrentHealth = document.getElementById("enemyCurrentHealth");
     enemyCurrentHealth.innerHTML = "50";
-  } */
-}
+  }
+} */
 
 /* 
   init(health) {
