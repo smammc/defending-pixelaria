@@ -11,13 +11,15 @@ class Game {
     this.height = 600;
     this.width = 900;
 
-    let enemy = new EnemyCard("Dragon", 3, 10, this.gameScreen, 10000, 150);
-    let playerCard1 = new PlayerCard("Knight", 1, 5, this.gameScreen, 100, 150);
-    let playerCard2 = new PlayerCard("Mage", 2, 3, this.gameScreen, 100, 150);
-    let playerCard3 = new PlayerCard("Ogre", 3, 6, this.gameScreen, 100, 150);
+    // let enemy = new Card("Dragon", 3, 10, this.gameScreen, 10000, 150);
+    //prettier-ignore
+    let playerCard1 = new Card("Knight", 1, 5, this.playerCardsHolder, "./images/knight.png");
+    /* let playerCard2 = new Card("Mage", 2, 3, this.gameScreen, 100, 150);
+    let playerCard3 = new Card("Ogre", 3, 6, this.gameScreen, 100, 150); */
   }
-  start() {
+
+  /* start() {
     this.introScreen.style.display = "none";
-    updateCurrentHealth();
-  }
+    playerCard1;
+  } */
 }

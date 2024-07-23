@@ -9,11 +9,19 @@ window.onload = function () {
   const ogreCard = document.getElementById("ogre-card");
   const endGameScreen = document.getElementById("end-game-screen");
   const restartButton = document.getElementById("restart-button");
+  let game;
 
   startButton.addEventListener("click", function () {
     console.log("starting");
-    introScreen.style.display = "none";
+    introScreen.style.display = "none"; // maybe should be moved to Game file;
+    startGame();
   });
+
+  function startGame() {
+    console.log("Starting game");
+    game = new Game();
+    game.start();
+  }
 
   instructionsButton.addEventListener("click", function () {
     console.log("Instructions");
