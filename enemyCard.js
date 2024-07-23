@@ -1,4 +1,4 @@
-class EnemyCard extends Card {
+class EnemyCard /* extends Card */ {
   constructor(
     name,
     attack,
@@ -8,8 +8,8 @@ class EnemyCard extends Card {
     height,
     imgSrc,
     health //prettier-ignore
-  ) {
-    super(name, attack, defense, gameScreen, width, height, imgSrc, health);
+  ) {}
+  /*   super(name, attack, defense, gameScreen, width, height, imgSrc, health);
     this.name = name;
     this.attack = attack;
     this.defense = defense;
@@ -24,7 +24,7 @@ class EnemyCard extends Card {
   updateCurrentHealth() {
     const enemyCurrentHealth = document.getElementById("enemyCurrentHealth");
     enemyCurrentHealth.innerHTML = "50";
-  }
+  } */
 }
 
 /* 
