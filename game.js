@@ -4,6 +4,8 @@ class Game {
     this.introScreen = document.getElementsById("intro-screen");
     this.gameScreen = document.getElementsById("game-screen");
     this.endScreen = document.getElementById("end-game-screen");
+    this.playerCardsHolder = document.getElementsByClassName("card-inventory");
+    // this.enemyCardsHolder = ; // get the div with the enemy cards
 
     // Set the width and height of the game screen
     this.height = 600;
