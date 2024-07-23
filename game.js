@@ -10,7 +10,9 @@ class Game {
     this.introScreen.style.display = "none";
   }
 }
-let enemy = new Enemy("Dragon", 3, 10);
+let enemy = new Enemy("Dragon", 3, 100);
+
+let playerCard = new PlayerCard("Knight", 100, 100);
 /* game{
 
     this.gamesScrenen.style.width = ```;${}this.widthpx

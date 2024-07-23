@@ -32,8 +32,6 @@
 }
 
 /* separation */
-/* separation */
-/* separation */
 
 /* Game screen elements */
 #game-screen {
@@ -55,6 +53,26 @@
   width: 260px;
   height: 200px;
   padding-left: 34%;
+}
+
+#enemyHealthBar {
+  border: 1px solid black;
+  width: 50%;
+  height: 4%;
+  margin-left: 28%;
+  border-radius: 5px;
+}
+
+#enemyCurrentHealth {
+  width: 100%;
+  height: 100%;
+  background-color: rgb(195, 22, 22);
+  border-radius: 5px;
+  text-align: center;
+  align-content: center;
+  font-weight: bold;
+  color: white;
+  font-size: 20px;
 }
 
 .cards-img {

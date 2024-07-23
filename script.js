@@ -7,6 +7,8 @@ window.onload = function () {
   const mageCard = document.getElementById("mage-card");
   const ogreCard = document.getElementById("ogre-card");
   const restartButton = document.getElementById("restart-button");
+  const enemyHealthBar = document.getElementById("enemyHealthBar");
+  const enemyCurrentHealth = document.getElementById("enemyCurrentHealth");
 
   startButton.addEventListener("click", function () {
     console.log("starting");
@@ -19,7 +21,7 @@ window.onload = function () {
   });
 
   knightCard.addEventListener("click", function () {
-    console.log("You chose the knight!");
+    console.log(`You chose the knight! ${this.attack} attack power`);
     document.getElementById("knight-screen").style.display = "block";
   });
 
@@ -34,10 +36,11 @@ window.onload = function () {
   });
 
   restartButton.addEventListener("click", function () {
+    console.log("restarting");
     restartGame();
   });
 
   function restartGame() {
-    location.reload;
+    location.reload();
   }
 };
