@@ -1,10 +1,10 @@
-class Enemy {
-  constructor(name, attack, health) {
-    this.name = name;
-    this.attack = attack;
-    this.health = health;
+class EnemyCard {
+  constructor(name, attack, defense, gameScreen, width, height, imgSrc) {
+    super(name, attack, defense, gameScreen, width, height, imgSrc);
     let enemyUnit = document.getElementById("enemy-div");
   }
+
+  // Characteristics that belong only to the enemyCard
 
   init(health) {
     let enemyLives = [];
