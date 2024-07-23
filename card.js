@@ -1,11 +1,21 @@
 class Card {
-  constructor(name, attack, defense, gameScreen, width, height, imgSrc) {
+  constructor(
+    name,
+    attack,
+    defense,
+    gameScreen,
+    width,
+    height,
+    imgSrc,
+    health
+  ) {
     this.name = name;
     this.attack = attack;
     this.defense = defense;
     this.gameScreen = gameScreen;
     this.width = width;
     this.height = height;
+    this.health = health;
 
     // Add variables to store the position of the card on the screen.
 

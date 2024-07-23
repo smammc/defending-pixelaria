@@ -1,11 +1,33 @@
-class EnemyCard {
-  constructor(name, attack, defense, gameScreen, width, height, imgSrc) {
-    super(name, attack, defense, gameScreen, width, height, imgSrc);
+class EnemyCard extends Card {
+  constructor(
+    name,
+    attack,
+    defense,
+    gameScreen,
+    width,
+    height,
+    imgSrc,
+    health //prettier-ignore
+  ) {
+    super(name, attack, defense, gameScreen, width, height, imgSrc, health);
+    this.name = name;
+    this.attack = attack;
+    this.defense = defense;
+    this.health = health;
+    this.width = width;
     let enemyUnit = document.getElementById("enemy-div");
+    updateCurrentHealth();
   }
 
   // Characteristics that belong only to the enemyCard
 
+  updateCurrentHealth() {
+    const enemyCurrentHealth = document.getElementById("enemyCurrentHealth");
+    enemyCurrentHealth.innerHTML = this.health;
+  }
+}
+
+/* 
   init(health) {
     let enemyLives = [];
     for (let i = 0; i < this.health; i++) {
@@ -17,5 +39,4 @@ class EnemyCard {
       enemyUnit.appendChild(enemyLives);
     }
     return enemyLives;
-  }
-}
+  } */
