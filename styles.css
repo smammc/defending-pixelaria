@@ -42,12 +42,41 @@
   background-image: url("https://preview.redd.it/ancient-archway-in-a-meadow-v0-3vm8ot8l599a1.gif?format=png8&s=f1f02ee85c0ea6f81c0ef750349f00ca3ad63f69");
 }
 
-.cards {
+.card-inventory {
   display: flex;
-  flex-direction: row;
-  width: 165px;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+#card-holder {
+  background-color: grey;
+  gap: 10px;
+  display: flex;
+  text-align: center;
+  padding: 1%;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 150px;
   height: 165px;
   padding: 20px;
+  border: 1px solid black;
+  padding: 30px;
+  text-align: center;
+  padding-top: 5%;
+  padding-bottom: 40%;
+}
+
+#card-name {
+  border: 1px solid black;
+  margin-bottom: 5%;
+  color: white;
+}
+
+.card-img {
   border: 1px solid black;
 }
 
@@ -75,26 +104,6 @@
   font-weight: bold;
   color: white;
   font-size: 20px;
-}
-
-.cards-img {
-  border: 1px solid black;
-}
-
-#card-holder {
-  background-color: grey;
-  width: 620px;
-  height: 215px;
-  margin-left: 27%;
-  margin-top: 16%;
-}
-
-h3 {
-  font-size: 18px;
-  margin-top: 0;
-  margin-bottom: 0;
-  margin-left: 6%;
-  position: absolute;
 }
 
 /* Card screens */
