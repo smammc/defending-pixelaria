@@ -2,20 +2,20 @@
 #intro-screen {
   height: 100vh;
   border: 1px solid black;
-  background-image: url("https://cdn1.epicgames.com/ue/product/Screenshot/Screenshot15-1920x1080-45355d05c9d60f0615c9afd76c1947c7.jpg?resize=1&w=1920");
+  background-image: url("help-pixelart/Designer\(6\).jpeg");
 }
 
 #start-button-img {
-  height: 200px;
-  width: 500px;
-  margin-top: 20%;
+  height: 170px;
+  width: 450px;
+  margin-top: 25%;
   margin-left: 5%;
 }
 
 #instructions-button {
-  height: 100px;
-  width: 250px;
-  margin-top: 2%;
+  height: 95px;
+  width: 225px;
+  margin-top: 1%;
   margin-left: 13%;
 }
 
@@ -39,20 +39,22 @@
 #game-screen {
   height: 100vh;
   border: 1px solid black;
+  background-image: url("https://preview.redd.it/ancient-archway-in-a-meadow-v0-3vm8ot8l599a1.gif?format=png8&s=f1f02ee85c0ea6f81c0ef750349f00ca3ad63f69");
 }
 
 .cards {
   display: flex;
   flex-direction: row;
-  width: 300px;
-  height: 300px;
+  width: 165px;
+  height: 165px;
   padding: 20px;
   border: 1px solid black;
 }
 
 .enemy {
-  width: 300px;
-  height: 300px;
+  width: 260px;
+  height: 200px;
+  padding-left: 34%;
 }
 
 .cards-img {
@@ -61,6 +63,75 @@
 
 #card-holder {
   background-color: grey;
-  width: 1030px;
-  height: 350px;
+  width: 620px;
+  height: 215px;
+  margin-left: 27%;
+  margin-top: 16%;
+}
+
+h3 {
+  font-size: 18px;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 6%;
+  position: absolute;
+}
+
+/* Card screens */
+/* Card screens */
+
+#knight-screen {
+  height: 100vh;
+  border: 1px solid black;
+  background-image: url("https://preview.redd.it/ancient-archway-in-a-meadow-v0-3vm8ot8l599a1.gif?format=png8&s=f1f02ee85c0ea6f81c0ef750349f00ca3ad63f69");
+}
+
+#knight-screen-img {
+  height: 50%;
+  width: 50%;
+  margin-left: 25%;
+  margin-top: 15%;
+}
+
+#mage-screen {
+  height: 100vh;
+  border: 1px solid black;
+  background-image: url("https://preview.redd.it/ancient-archway-in-a-meadow-v0-3vm8ot8l599a1.gif?format=png8&s=f1f02ee85c0ea6f81c0ef750349f00ca3ad63f69");
+}
+
+#mage-screen-img {
+  height: 50%;
+  width: 50%;
+  margin-left: 25%;
+  margin-top: 13%;
+}
+
+#ogre-screen {
+  height: 100vh;
+  border: 1px solid black;
+  background-image: url("https://preview.redd.it/ancient-archway-in-a-meadow-v0-3vm8ot8l599a1.gif?format=png8&s=f1f02ee85c0ea6f81c0ef750349f00ca3ad63f69");
+}
+
+#ogre-screen-img {
+  height: 50%;
+  width: 50%;
+  margin-left: 25%;
+  margin-top: 12%;
+}
+
+.summon-text {
+  text-align: center;
+  background-color: aquamarine;
+}
+
+/* END GAME */
+
+#end-game-screen {
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  border: 1px solid black;
+  background-image: url("https://preview.redd.it/ancient-archway-in-a-meadow-v0-3vm8ot8l599a1.gif?format=png8&s=f1f02ee85c0ea6f81c0ef750349f00ca3ad63f69");
 }

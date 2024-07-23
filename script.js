@@ -6,6 +6,7 @@ window.onload = function () {
   const knightCard = document.getElementById("knight-card");
   const mageCard = document.getElementById("mage-card");
   const ogreCard = document.getElementById("ogre-card");
+  const restartButton = document.getElementById("restart-button");
 
   startButton.addEventListener("click", function () {
     console.log("starting");
@@ -19,13 +20,24 @@ window.onload = function () {
 
   knightCard.addEventListener("click", function () {
     console.log("You chose the knight!");
+    document.getElementById("knight-screen").style.display = "block";
   });
 
   mageCard.addEventListener("click", function () {
     console.log("You chose the mage!");
+    document.getElementById("mage-screen").style.display = "block";
   });
 
   ogreCard.addEventListener("click", function () {
     console.log("You chose the ogre!");
+    document.getElementById("ogre-screen").style.display = "block";
   });
+
+  restartButton.addEventListener("click", function () {
+    restartGame();
+  });
+
+  function restartGame() {
+    location.reload;
+  }
 };

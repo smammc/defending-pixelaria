@@ -26,27 +26,23 @@
       </div>
       <!-- separation -->
       <!-- separation -->
-      <!-- separation -->
-      <!-- separation -->
-      <!-- separation -->
-      <!-- separation -->
-      <!-- separation -->
 
       <div id="game-screen">
         <div class="enemy" id="enemy-div">
           <img
             id="enemy-dragon"
             class="enemy"
-            src="https://static.vecteezy.com/system/resources/previews/019/974/822/original/pixel-art-flying-dragon-dragon-pixel-illustration-cartoon-monster-pixel-design-free-vector.jpg"
+            src="help-pixelart\Designer(10).jpeg"
           />
         </div>
         <div class="card-inventory">
           <div id="card-holder" class="cards">
+            <h3>KNIGHT</h3>
             <div class="cards" id="knight-card">
               <img
                 class="cards-img"
                 id="knight-img"
-                src="https://w7.pngwing.com/pngs/790/698/png-transparent-digital-art-knight-pixel-text-fictional-character-technology-thumbnail.png"
+                src="help-pixelart/Designer(14).jpeg"
               />
             </div>
 
@@ -54,14 +50,15 @@
               <img
                 class="cards-img"
                 id="mage-img"
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvmP1X_Hgub6NOSlMART9hLOv3PBjbFywzNg&s"
+                src="help-pixelart\Designer(13).jpeg"
               />
             </div>
+
             <div class="cards" id="ogre-card">
               <img
                 class="cards-img"
                 id="ogre-img"
-                src="https://as1.ftcdn.net/v2/jpg/02/70/45/36/1000_F_270453616_8YjH6nG0dE0eMpHRsqDMKIgDmCH6a52Z.jpg"
+                src="help-pixelart\FFD9djyXEAYdggn.png"
               />
             </div>
           </div>
@@ -72,8 +69,28 @@
       <!-- card screens to access on event-listener-->
       <!-- card screens to access on event-listener-->
       <!-- card screens to access on event-listener-->
-      <div id="mage-screen"></div>
-      <div id="ogre-screen"></div>
+      <div id="mage-screen">
+        <h2 class="summon-text">YOU SUMMONED THE MAGE</h2>
+        <img id="mage-screen-img" src="help-pixelart/Designer(12).jpeg" />
+      </div>
+      <div id="knight-screen">
+        <h2 class="summon-text">YOU SUMMONED THE KNIGHT</h2>
+        <img
+          id="knight-screen-img"
+          src="help-pixelart\pixel-knight-in-action.jpg"
+        />
+      </div>
+      <div id="ogre-screen">
+        <h2 class="summon-text">YOU SUMMONED THE OGRE</h2>
+        <img src="help-pixelart/Designer(11).jpeg" id="ogre-screen-img" />
+      </div>
+      <!--  game end and restart -->
+      <!--  game end and restart -->
+      <!--  game end and restart -->
+      <div id="end-game-screen">
+        <h1>YOU WIN!</h1>
+        <button id="restart-button">RESTART GAME</button>
+      </div>
     </main>
     <script src="enemy.js"></script>
     <script src="game.js"></script>
