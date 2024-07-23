@@ -23,7 +23,7 @@ class EnemyCard extends Card {
 
   updateCurrentHealth() {
     const enemyCurrentHealth = document.getElementById("enemyCurrentHealth");
-    enemyCurrentHealth.innerHTML = this.health;
+    enemyCurrentHealth.innerHTML = "50";
   }
 }
 

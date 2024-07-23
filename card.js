@@ -16,6 +16,7 @@ class Card {
     this.width = width;
     this.height = height;
     this.health = health;
+    cardHolderDiv.appendChild("newcardname");
 
     // Add variables to store the position of the card on the screen.
 

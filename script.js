@@ -9,6 +9,7 @@ window.onload = function () {
   const ogreCard = document.getElementById("ogre-card");
   const endGameScreen = document.getElementById("end-game-screen");
   const restartButton = document.getElementById("restart-button");
+  const enemyCurrentHealth = document.getElementById("enemyCurrentHealth");
 
   startButton.addEventListener("click", function () {
     console.log("starting");

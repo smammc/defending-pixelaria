@@ -9,7 +9,16 @@ class Game {
     this.height = 600;
     this.width = 900;
 
-    let enemy = new EnemyCard("Dragon", 3, 10, this.gameScreen, 10000, 150);
+    let enemy = new EnemyCard(
+      "Dragon",
+      3,
+      10,
+      this.gameScreen,
+      100,
+      150,
+      "imagesdragon.png",
+      1000
+    );
     let playerCard1 = new PlayerCard("Knight", 1, 5, this.gameScreen, 100, 150);
     let playerCard2 = new PlayerCard("Mage", 2, 3, this.gameScreen, 100, 150);
     let playerCard3 = new PlayerCard("Ogre", 3, 6, this.gameScreen, 100, 150);
