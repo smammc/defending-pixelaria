@@ -1,25 +1,49 @@
 class Game {
   constructor() {
     // Get the start screen and game screen elements
-    this.introScreen = document.getElementsById("intro-screen");
-    this.gameScreen = document.getElementsById("game-screen");
+    this.introScreen = document.getElementById("intro-screen");
+    this.gameScreen = document.getElementById("game-screen");
     this.endScreen = document.getElementById("end-game-screen");
-    this.playerCardsHolder = document.getElementsByClassName("card-inventory");
-    // this.enemyCardsHolder = ; // get the div with the enemy cards
+    this.playerCardsHolder = document.querySelector(".card-inventory");
+    this.enemyCardsHolder = document.querySelector(".enemy-card-inventory");
 
-    // Set the width and height of the game screen
-    this.height = 600;
-    this.width = 900;
-
-    // let enemy = new Card("Dragon", 3, 10, this.gameScreen, 10000, 150);
-    //prettier-ignore
-    let playerCard1 = new Card("Knight", 1, 5, this.playerCardsHolder, "./images/knight.png");
-    /* let playerCard2 = new Card("Mage", 2, 3, this.gameScreen, 100, 150);
-    let playerCard3 = new Card("Ogre", 3, 6, this.gameScreen, 100, 150); */
+    this.playerCardsArray = [];
+    this.enemyArray = [];
   }
 
-  /* start() {
+  addPlayerCard(card) {
+    this.playerCardsArray.push(card);
+  }
+
+  addEnemy(enemyCard) {
+    this.enemyArray.push(enemyCard);
+  }
+
+  getEnemy() {
+    return this.enemyArray[0];
+  }
+
+  start() {
     this.introScreen.style.display = "none";
-    playerCard1;
-  } */
+    this.gameScreen.style.display = "block";
+
+    //prettier-ignore
+    this.playerKnight = new Card("Knight", 1, 50, this.playerCardsHolder, "./images/Designer(14).jpeg");
+    //prettier-ignore
+    this.playerFireMage = new Card("Fire Mage", 2, 30, this.playerCardsHolder, "./images/Designer(13).jpeg");
+    //prettier-ignore
+    this.playerOgre = new Card("Ogre", 3, 60, this.playerCardsHolder, "images/FFD9djyXEAYdggn.png");
+    //prettier-ignore
+    this.PlayerIceMage = new Card("Ice Mage", 20, 20, this.playerCardsHolder, "images/Designer(1).jpeg");
+    //prettier-ignore
+    this.enemyDragon = new EnemyCard("Blue Dragon", 5, 100, this.enemyCardsHolder, "images/dragon.png");
+
+    this.addPlayerCard(this.playerKnight);
+    this.addEnemy(this.enemyDragon);
+
+    this.playerKnight.attackEnemy(() => {
+      const enemy = this.getEnemy();
+      enemy.decreaseHealth(playerKnight.getAttack());
+    });
+  }
 }

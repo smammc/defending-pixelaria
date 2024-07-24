@@ -9,6 +9,7 @@ window.onload = function () {
   const ogreCard = document.getElementById("ogre-card");
   const endGameScreen = document.getElementById("end-game-screen");
   const restartButton = document.getElementById("restart-button");
+
   let game;
 
   startButton.addEventListener("click", function () {
@@ -27,8 +28,8 @@ window.onload = function () {
     console.log("Instructions");
     instructionsImg.style.display = "block";
   });
-
-  knightCard.addEventListener("click", function () {
+  /* 
+  this.playerKnight.addEventListener("click", function () {
     console.log("You chose the knight!");
     document.getElementById("game-screen").style.display = "none";
     document.getElementById("mage-screen").style.display = "none";
@@ -37,7 +38,7 @@ window.onload = function () {
     document.getElementById("knight-screen").style.display = "block";
   });
 
-  setTimeout(showGameScreenKnight(), 3000);
+   setTimeout(showGameScreenKnight(), 3000);
   function showGameScreenKnight() {
     document.getElementById("game-screen").style.display = "block";
     document.getElementById("mage-screen").style.display = "none";
@@ -55,20 +56,20 @@ window.onload = function () {
     document.getElementById("knight-screen").style.display = "none";
   });
 
-  ogreCard.addEventListener("click", function () {
+   ogreCard.addEventListener("click", function () {
     console.log("You chose the ogre!");
     document.getElementById("ogre-screen").style.display = "block";
     document.getElementById("game-screen").style.display = "none";
     document.getElementById("mage-screen").style.display = "none";
     document.getElementById("end-game-screen").style.display = "none";
     document.getElementById("knight-screen").style.display = "none";
-  });
+  }); */
 
   restartButton.addEventListener("click", function () {
     restartGame();
   });
 
   function restartGame() {
-    location.reload;
+    location.reload();
   }
 };
