@@ -6,6 +6,9 @@ class Game {
     this.endScreen = document.getElementById("end-game-screen");
     this.playerCardsHolder = document.querySelector(".card-inventory");
     this.enemyCardsHolder = document.querySelector(".enemy-card-inventory");
+
+    this.playerCardsArray = [];
+    this.enemyCardsArray = [];
   }
 
   getEnemy() {
@@ -16,6 +19,15 @@ class Game {
     cardsArray.forEach((card, index) => {
         console.log("Generating card", index)
         const newCard = new Card(card.name, card.attack, card.health, card.elementToAppend, card.imgSrc);
+        arrayToAppend.push(newCard);
+      })
+  }
+  generateEnemy(cardsArray, arrayToAppend) {
+    // prettier-ignore
+    cardsArray.forEach((card, index) => {
+        console.log("Generating enemy", index)
+        const newEnemy = new EnemyCard(card.name, card.attack, card.health, card.elementToAppend, card.imgSrc);
+        arrayToAppend.push(newCard);
       })
   }
 
@@ -64,7 +76,9 @@ class Game {
       },
     ];
 
-    this.generateCards(playerCards);
-    this.generateCards(enemyCards);
+    this.generateCards(playerCards, this.playerCardsArray);
+    this.generateEnemy(enemyCards, this.enemyCardsArray);
+
+    console.log(this.playerCardsArray);
   }
 }
