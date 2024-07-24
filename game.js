@@ -6,44 +6,65 @@ class Game {
     this.endScreen = document.getElementById("end-game-screen");
     this.playerCardsHolder = document.querySelector(".card-inventory");
     this.enemyCardsHolder = document.querySelector(".enemy-card-inventory");
-
-    this.playerCardsArray = [];
-    this.enemyArray = [];
-  }
-
-  addPlayerCard(card) {
-    this.playerCardsArray.push(card);
-  }
-
-  addEnemy(enemyCard) {
-    this.enemyArray.push(enemyCard);
   }
 
   getEnemy() {
-    return this.enemyArray[0];
+    return this.enemyCardsArray[0];
+  }
+  generateCards(cardsArray, arrayToAppend) {
+    // prettier-ignore
+    cardsArray.forEach((card, index) => {
+        console.log("Generating card", index)
+        const newCard = new Card(card.name, card.attack, card.health, card.elementToAppend, card.imgSrc);
+      })
   }
 
   start() {
     this.introScreen.style.display = "none";
     this.gameScreen.style.display = "block";
 
-    //prettier-ignore
-    this.playerKnight = new Card("Knight", 1, 50, this.playerCardsHolder, "./images/Designer(14).jpeg");
-    //prettier-ignore
-    this.playerFireMage = new Card("Fire Mage", 2, 30, this.playerCardsHolder, "./images/Designer(13).jpeg");
-    //prettier-ignore
-    this.playerOgre = new Card("Ogre", 3, 60, this.playerCardsHolder, "images/FFD9djyXEAYdggn.png");
-    //prettier-ignore
-    this.PlayerIceMage = new Card("Ice Mage", 20, 20, this.playerCardsHolder, "images/Designer(1).jpeg");
-    //prettier-ignore
-    this.enemyDragon = new EnemyCard("Blue Dragon", 5, 100, this.enemyCardsHolder, "images/dragon.png");
+    let playerCards = [
+      {
+        name: "Knight",
+        attack: 1,
+        health: 50,
+        elementToAppend: this.playerCardsHolder,
+        imgSrc: "./images/Designer(14).jpeg",
+      },
+      {
+        name: "Fire Mage",
+        attack: 2,
+        health: 30,
+        elementToAppend: this.playerCardsHolder,
+        imgSrc: "./images/Designer(13).jpeg",
+      },
+      {
+        name: "Ogre",
+        attack: 3,
+        health: 60,
+        elementToAppend: this.playerCardsHolder,
+        imgSrc: "./images/FFD9djyXEAYdggn.png",
+      },
+      {
+        name: "Ice Mage",
+        attack: 20,
+        health: 20,
+        elementToAppend: this.playerCardsHolder,
+        imgSrc: "./images/Designer(1).jpeg",
+      },
+    ];
 
-    addPlayerCard(this.playerKnight);
-    addEnemy(this.enemyDragon);
+    let enemyCards = [
+      {
+        name: "Blue Dragon",
+        attack: 5,
+        health: 100,
+        elementToAppend: this.enemyCardsHolder,
+        imgSrc: "images/dragon.png",
+      },
+    ];
 
-    this.playerKnight.attackEnemy(() => {
-      const enemy = this.getEnemy();
-      enemy.decreaseHealth(playerKnight.getAttack());
-    });
+    this.generateCards(playerCards);
+    this.generateCards(enemyCards);
   }
 }
