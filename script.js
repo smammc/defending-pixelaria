@@ -22,11 +22,8 @@ window.onload = function () {
     console.log("Starting game");
     game = new Game();
     game.start();
+    game.loseGame();
   }
-
-  /*   function startBattleCycle() {
-    game.battleCycle();
-  } */
 
   instructionsButton.addEventListener("click", function () {
     console.log("Instructions");

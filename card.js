@@ -5,7 +5,7 @@ class Card {
     this.attack = attack;
     this.health = health;
     this.elementToAppend = elementToAppend;
-      this.enemy = enemy
+    this.enemy = enemy
     this.enemyCardsArray = []
 
 
@@ -52,13 +52,12 @@ class Card {
     this.elementToAppend.appendChild(cardContainer);
     this.element = cardContainer
 
-    this.element.addEventListener("click", () => {
+  this.element.addEventListener("click", () => {
   this.damageEnemy()
   this.updateEnemyHealth()
   this.damagePlayer()
   this.updatePlayerCardHealth()
 })
-   
   }
 
   updateEnemyHealth() {
@@ -73,14 +72,12 @@ class Card {
 
   updatePlayerCardHealth() {
     if (this.health <= 0) {
-      document.getElementById(`${this.name}health-container-id`).remove;
+      document.getElementById(`${this.name}`).remove();
+    } else {
+      //prettier-ignore
+      const cardHealth = document.getElementById(`${this.name}health-container-id`);
+      cardHealth.innerHTML = `Health: ${this.health}`;
     }
-    const cardHealth = document.getElementById(
-      `${this.name}health-container-id`
-    );
-    console.log(cardHealth);
-    cardHealth.innerHTML = `Health: ${this.health}`;
-    console.log(this.health);
   }
 
   damageEnemy() {
