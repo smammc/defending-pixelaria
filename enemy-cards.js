@@ -31,9 +31,6 @@ class EnemyCard {
   }
 
   // Reduce the value of health by the amount given
-  decreaseHealth(amount) {
-    this.health -= amount;
-  }
 
   updateEnemyHealth() {
     const enemyCurrentHealth = document.getElementById(

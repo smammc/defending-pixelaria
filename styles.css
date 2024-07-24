@@ -117,13 +117,6 @@
   align-items: center;
 }
 
-/* #enemy-card-holder {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-content: center;
-} */
-
 .enemy-container {
   display: flex;
   flex-direction: column;
@@ -132,8 +125,9 @@
 }
 
 .enemy-name-class {
-  color: wheat;
+  color: white;
   text-align: center;
+  font-weight: bold;
 }
 
 .enemy-img {
