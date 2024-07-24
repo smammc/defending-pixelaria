@@ -9,23 +9,39 @@ class Game {
 
     this.playerCardsArray = [];
     this.enemyCardsArray = [];
+
+    this.enemyWins = false;
+    this.playerWins = false;
+    this.playerCardCounter = 0;
   }
 
   generateCards(cardsArray, arrayToAppend, enemyObj) {
-    // prettier-ignore
     cardsArray.forEach((card, index) => {
-        console.log("Generating card", index)
-        const newCard = new Card(card.name, card.attack, card.health, card.elementToAppend, card.imgSrc, enemyObj);
-        arrayToAppend.push(newCard);
-      })
+      console.log("Generating card", index);
+      const newCard = new Card(
+        card.name,
+        card.attack,
+        card.health,
+        card.elementToAppend,
+        card.imgSrc,
+        enemyObj
+      );
+      arrayToAppend.push(newCard);
+    });
   }
+
   generateEnemy(cardsArray, arrayToAppend) {
-    // prettier-ignore
     cardsArray.forEach((card, index) => {
-        console.log("Generating enemy", index)
-        const newEnemy = new EnemyCard(card.name, card.attack, card.health, card.elementToAppend, card.imgSrc);
-        arrayToAppend.push(newEnemy);
-      })
+      console.log("Generating enemy", index);
+      const newEnemy = new EnemyCard(
+        card.name,
+        card.attack,
+        card.health,
+        card.elementToAppend,
+        card.imgSrc
+      );
+      arrayToAppend.push(newEnemy);
+    });
   }
 
   start() {
@@ -72,31 +88,37 @@ class Game {
         imgSrc: "images/dragon.png",
       },
     ];
-    //prettier-ignore
+
     this.generateEnemy(enemyCards, this.enemyCardsArray);
-    //prettier-ignore
-    this.generateCards(playerCards, this.playerCardsArray, this.enemyCardsArray[0]);
-    this.availableCards = document.getElementsByClassName("card");
-    console.log("console", this.playerCardsArray);
+    // prettier-ignore
+    this.generateCards(playerCards,this.playerCardsArray,this.enemyCardsArray[0]);
+    this.playerCardCounter = this.playerCardsArray.length;
+  }
+
+  battleCycle() {
+    this.playerCardsArray.forEach((card) => {
+      card.element.addEventListener("click", () => {
+        card.damageEnemy();
+        card.updateEnemyHealth();
+        card.damagePlayer();
+        card.updatePlayerCardHealth();
+        this.updatePlayerCardNumber();
+        this.loseGame();
+      });
+    });
   }
 
   loseGame() {
-    console.log(this.playerCardsArray.length);
+    if (this.playerCardCounter === 0) {
+      console.log("Player loses");
+      this.enemyWins = true;
+    }
   }
 
-  /*  const cardTest = document.getElementById("card-holder");
-    if ((cardTest.length = 3)) {
-      console.log("lose"); */
-  /*  const gameOverCardArray = [...this.availableCards];
-    console.log("testing", gameOverCardArray);
-    if (gameOverCardArray.length <= 2) {
-      console.log("losing cards");
-    }
-  } */
-  /*   if (
-      this.playerCardsArray.every(
-        (card) => document.getElementById(card.name) === null
-      )
-    ) {
-    } */
+  updatePlayerCardNumber() {
+    let cardContainer = document.getElementById("card-holder");
+    let playerCardNumber = cardContainer.children.length;
+    console.log(playerCardNumber);
+    this.playerCardCounter = playerCardNumber;
+  }
 }

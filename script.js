@@ -23,6 +23,13 @@ window.onload = function () {
     game = new Game();
     game.start();
     game.loseGame();
+    battleCycle();
+  }
+
+  function battleCycle() {
+    // while (game.enemyWins === false && game.playerWins) {
+    // }
+    game.battleCycle();
   }
 
   instructionsButton.addEventListener("click", function () {
