@@ -1,10 +1,13 @@
 class Card {
   //prettier-ignore
-  constructor(name, attack, health, elementToAppend, imgSrc) {
+  constructor(name, attack, health, elementToAppend, imgSrc, enemy) {
     this.name = name;
     this.attack = attack;
     this.health = health;
     this.elementToAppend = elementToAppend;
+      this.enemy = enemy
+    this.enemyCardsArray = []
+
 
     // Add variables to store the position of the card on the screen.
 
@@ -31,6 +34,7 @@ class Card {
 
     let healthContainer = document.createElement("div");
     healthContainer.innerHTML = `Health: ${this.health}`
+    healthContainer.setAttribute("id", `${this.name}health-container-id`)
 
     let attackContainer = document.createElement("div");
     attackContainer.innerHTML = `Attack Power: ${this.attack}`
@@ -49,33 +53,41 @@ class Card {
     this.element = cardContainer
 
     this.element.addEventListener("click", () => {
-      this.damageEnemy()
-    })
+  this.damageEnemy()
+  this.updateEnemyHealth()
+  this.damagePlayer()
+  this.updatePlayerCardHealth()
+})
+   
   }
 
   updateEnemyHealth() {
+    if (this.enemy.health <= 0) {
+      this.enemy.health = 0;
+    }
     const enemyCurrentHealth = document.getElementById(
       "enemy-health-container"
     );
-    enemyCurrentHealth.innerHTML = `${this.health}`;
+    enemyCurrentHealth.innerHTML = `${this.enemy.health}`;
+  }
+
+  updatePlayerCardHealth() {
+    if (this.health <= 0) {
+      document.getElementById(`${this.name}health-container-id`).remove;
+    }
+    const cardHealth = document.getElementById(
+      `${this.name}health-container-id`
+    );
+    console.log(cardHealth);
+    cardHealth.innerHTML = `Health: ${this.health}`;
+    console.log(this.health);
   }
 
   damageEnemy() {
-    this.enemyDragon.decreaseHealth(this.attack);
+    this.enemy.health -= this.attack;
   }
 
-  getHealth() {
-    // Return the value of health at the moment
-    return this.health;
-  }
-
-  decreaseHealth(amount) {
-    // Reduce the value of health by the amount given
-    this.health -= amount;
-  }
-
-  getAttack() {
-    // return the value of attack
-    return this.attack;
+  damagePlayer() {
+    this.health -= this.enemy.attack;
   }
 }

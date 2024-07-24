@@ -24,6 +24,10 @@ window.onload = function () {
     game.start();
   }
 
+  /*   function startBattleCycle() {
+    game.battleCycle();
+  } */
+
   instructionsButton.addEventListener("click", function () {
     console.log("Instructions");
     instructionsImg.style.display = "block";

@@ -14,11 +14,11 @@ class Game {
   getEnemy() {
     return this.enemyCardsArray[0];
   }
-  generateCards(cardsArray, arrayToAppend) {
+  generateCards(cardsArray, arrayToAppend, enemyObj) {
     // prettier-ignore
     cardsArray.forEach((card, index) => {
         console.log("Generating card", index)
-        const newCard = new Card(card.name, card.attack, card.health, card.elementToAppend, card.imgSrc);
+        const newCard = new Card(card.name, card.attack, card.health, card.elementToAppend, card.imgSrc, enemyObj);
         arrayToAppend.push(newCard);
       })
   }
@@ -75,10 +75,14 @@ class Game {
         imgSrc: "images/dragon.png",
       },
     ];
-
-    this.generateCards(playerCards, this.playerCardsArray);
+    //prettier-ignore
     this.generateEnemy(enemyCards, this.enemyCardsArray);
-
-    console.log(this.playerCardsArray);
+    //prettier-ignore
+    console.log(this.enemyCardsArray[0])
+    this.generateCards(
+      playerCards,
+      this.playerCardsArray,
+      this.enemyCardsArray[0]
+    );
   }
 }
