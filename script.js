@@ -12,6 +12,18 @@ window.onload = function () {
 
   let game;
 
+  const instructionsEvent = document.getElementById("instructions-button");
+  const instructionsEl = document.getElementById("instructions");
+
+  instructionsEvent.addEventListener("click", () => {
+    console.log("click");
+    if (instructionsEl.style.display === "none") {
+      instructionsEl.style.display = "block";
+    } else {
+      instructionsEl.style.display = "none";
+    }
+  });
+
   startButton.addEventListener("click", function () {
     console.log("starting");
     introScreen.style.display = "none"; // maybe should be moved to Game file;
@@ -32,10 +44,6 @@ window.onload = function () {
     game.battleCycle();
   }
 
-  instructionsButton.addEventListener("click", function () {
-    console.log("Instructions");
-    instructionsImg.style.display = "block";
-  });
   /* 
   this.playerKnight.addEventListener("click", function () {
     console.log("You chose the knight!");

@@ -8,29 +8,28 @@
 #start-button-img {
   height: 170px;
   width: 450px;
-  margin-top: 35%;
-  margin-left: 5%;
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+}
+
+#title {
+  position: absolute;
+  top: 20px;
+  right: 30px;
 }
 
 #instructions-button {
-  height: 200px;
+  height: 170px;
   width: 300px;
-  margin-left: 40%;
-  margin-bottom: 30%;
 }
 
-#instructions-button-div {
-  margin-left: 285px;
-  height: 20%;
-}
-
-#instructions-img {
-  display: none;
-  align-self: center;
-  margin-left: 50%;
-  margin-top: -75%;
-  width: 400px;
-  height: 600px;
+#instructions {
+  padding-top: 0;
+  margin-top: 0;
+  padding-left: 150px;
+  height: 200px;
+  width: 550px;
 }
 
 /* separation */
