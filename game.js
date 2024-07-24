@@ -38,8 +38,8 @@ class Game {
     //prettier-ignore
     this.enemyDragon = new EnemyCard("Blue Dragon", 5, 100, this.enemyCardsHolder, "images/dragon.png");
 
-    this.addPlayerCard(this.playerKnight);
-    this.addEnemy(this.enemyDragon);
+    addPlayerCard(this.playerKnight);
+    addEnemy(this.enemyDragon);
 
     this.playerKnight.attackEnemy(() => {
       const enemy = this.getEnemy();
