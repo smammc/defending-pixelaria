@@ -11,9 +11,6 @@ class Game {
     this.enemyCardsArray = [];
   }
 
-  getEnemy() {
-    return this.enemyCardsArray[0];
-  }
   generateCards(cardsArray, arrayToAppend, enemyObj) {
     // prettier-ignore
     cardsArray.forEach((card, index) => {
@@ -69,7 +66,7 @@ class Game {
     let enemyCards = [
       {
         name: "Blue Dragon",
-        attack: 5,
+        attack: 100,
         health: 100,
         elementToAppend: this.enemyCardsHolder,
         imgSrc: "images/dragon.png",
@@ -78,11 +75,28 @@ class Game {
     //prettier-ignore
     this.generateEnemy(enemyCards, this.enemyCardsArray);
     //prettier-ignore
-    console.log(this.enemyCardsArray[0])
-    this.generateCards(
-      playerCards,
-      this.playerCardsArray,
-      this.enemyCardsArray[0]
-    );
+    this.generateCards(playerCards, this.playerCardsArray, this.enemyCardsArray[0]);
+    this.availableCards = document.getElementsByClassName("card");
+    console.log("console", this.playerCardsArray);
   }
+
+  loseGame() {
+    console.log(this.playerCardsArray.length);
+  }
+
+  /*  const cardTest = document.getElementById("card-holder");
+    if ((cardTest.length = 3)) {
+      console.log("lose"); */
+  /*  const gameOverCardArray = [...this.availableCards];
+    console.log("testing", gameOverCardArray);
+    if (gameOverCardArray.length <= 2) {
+      console.log("losing cards");
+    }
+  } */
+  /*   if (
+      this.playerCardsArray.every(
+        (card) => document.getElementById(card.name) === null
+      )
+    ) {
+    } */
 }
