@@ -27,7 +27,7 @@ class Game {
     cardsArray.forEach((card, index) => {
         console.log("Generating enemy", index)
         const newEnemy = new EnemyCard(card.name, card.attack, card.health, card.elementToAppend, card.imgSrc);
-        arrayToAppend.push(newCard);
+        arrayToAppend.push(newEnemy);
       })
   }
 
