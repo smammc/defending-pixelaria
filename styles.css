@@ -199,7 +199,7 @@
 
 /* END GAME */
 
-#end-game-screen {
+.end-game-screen {
   text-align: center;
   justify-content: center;
   display: flex;

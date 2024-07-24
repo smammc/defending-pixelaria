@@ -1,72 +1,59 @@
 class Card {
-  //prettier-ignore
   constructor(name, attack, health, elementToAppend, imgSrc, enemy) {
     this.name = name;
     this.attack = attack;
     this.health = health;
     this.elementToAppend = elementToAppend;
-    this.enemy = enemy
-    this.enemyCardsArray = []
+    this.enemy = enemy;
+    this.enemyCardsArray = [];
 
-
-    // Add variables to store the position of the card on the screen.
-
-    //Creating card container
+    // Creating card container
     let cardContainer = document.createElement("div");
-    cardContainer.setAttribute("id", `${this.name}`)
-    cardContainer.setAttribute("class", "card")
+    cardContainer.setAttribute("id", `${this.name}`);
+    cardContainer.setAttribute("class", "card");
 
-    //Creating the card elements
-
+    // Creating the card elements
     let nameContainer = document.createElement("div");
-    nameContainer.innerHTML = this.name
-    nameContainer.setAttribute("id", "card-name")
+    nameContainer.innerHTML = this.name;
+    nameContainer.setAttribute("id", "card-name");
 
-    //Creating and styling the image element
+    // Creating and styling the image element
     let imageContainer = document.createElement("img");
-    imageContainer.src = imgSrc
-    imageContainer.setAttribute("class","card-img")
+    imageContainer.src = imgSrc;
+    imageContainer.setAttribute("class", "card-img");
 
-    //Card stats
+    // Card stats
     let statsContainer = document.createElement("div");
-    statsContainer.setAttribute("id", "stats-container")
-    statsContainer.style.backgroundColor = "peru"
+    statsContainer.setAttribute("id", "stats-container");
+    statsContainer.style.backgroundColor = "peru";
 
     let healthContainer = document.createElement("div");
-    healthContainer.innerHTML = `Health: ${this.health}`
-    healthContainer.setAttribute("id", `${this.name}health-container-id`)
+    healthContainer.innerHTML = `Health: ${this.health}`;
+    healthContainer.setAttribute("id", `${this.name}health-container-id`);
 
     let attackContainer = document.createElement("div");
-    attackContainer.innerHTML = `Attack Power: ${this.attack}`
+    attackContainer.innerHTML = `Attack Power: ${this.attack}`;
 
-    //Connecting stats to stats container
+    // Connecting stats to stats container
     statsContainer.appendChild(healthContainer);
     statsContainer.appendChild(attackContainer);
 
-    //Appending elements together
+    // Appending elements together
     cardContainer.appendChild(nameContainer);
     cardContainer.appendChild(imageContainer);
     cardContainer.appendChild(statsContainer);
 
-    //Append everything to cardContainer
+    // Append everything to cardContainer
     this.elementToAppend.appendChild(cardContainer);
-    this.element = cardContainer
-
-  this.element.addEventListener("click", () => {
-  this.damageEnemy()
-  this.updateEnemyHealth()
-  this.damagePlayer()
-  this.updatePlayerCardHealth()
-})
+    this.element = cardContainer;
   }
 
   updateEnemyHealth() {
     if (this.enemy.health <= 0) {
       this.enemy.health = 0;
     }
-    const enemyCurrentHealth = document.getElementById(
-      "enemy-health-container"
-    );
+    // prettier-ignore
+    const enemyCurrentHealth = document.getElementById("enemy-health-container");
     enemyCurrentHealth.innerHTML = `${this.enemy.health}`;
   }
 
@@ -74,8 +61,9 @@ class Card {
     if (this.health <= 0) {
       document.getElementById(`${this.name}`).remove();
     } else {
-      //prettier-ignore
-      const cardHealth = document.getElementById(`${this.name}health-container-id`);
+      const cardHealth = document.getElementById(
+        `${this.name}health-container-id`
+      );
       cardHealth.innerHTML = `Health: ${this.health}`;
     }
   }
