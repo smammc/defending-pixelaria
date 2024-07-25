@@ -2,7 +2,7 @@
 #intro-screen {
   height: 100vh;
   border: 1px solid black;
-  background-image: url("images/Designer\(6\).jpeg");
+  background-image: url("images/Start-screen-background.jpeg");
 }
 
 #start-button-img {
@@ -38,6 +38,9 @@
 
 /* Game screen elements */
 #game-screen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 100vh;
   border: 1px solid black;
   background-image: url("https://preview.redd.it/ancient-archway-in-a-meadow-v0-3vm8ot8l599a1.gif?format=png8&s=f1f02ee85c0ea6f81c0ef750349f00ca3ad63f69");
@@ -104,6 +107,21 @@
   font-weight: bold;
 }
 
+/* .player-attack-img-div {
+  border: 1px, solid, black;
+  align-items: center;
+  align-content: center;
+  display: flex;
+} */
+
+.player-attack-img {
+  align-self: center;
+  align-self: center;
+  display: flex;
+  height: 40%;
+  margin-left: 8%;
+}
+
 /* Enemy styling */
 /* Enemy styling */
 
@@ -147,6 +165,12 @@
   color: white;
   font-size: 18px;
   align-self: center;
+}
+
+#enemy-attack-container {
+  text-align: center;
+  font-weight: bold;
+  color: white;
 }
 
 /* Card screens */
