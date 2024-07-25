@@ -24,13 +24,11 @@ window.onload = function () {
   });
 
   startButton.addEventListener("click", function () {
-    console.log("starting");
-    introScreen.style.display = "none"; // maybe should be moved to Game file;
+    introScreen.style.display = "none";
     startGame();
   });
 
   function startGame() {
-    console.log("Starting game");
     game = new Game();
     game.start();
     game.loseGame();
@@ -38,47 +36,8 @@ window.onload = function () {
   }
 
   function battleCycle() {
-    // while (game.enemyWins === false && game.playerWins) {
-    // }
     game.battleCycle();
   }
-
-  /* 
-  this.playerKnight.addEventListener("click", function () {
-    console.log("You chose the knight!");
-    document.getElementById("game-screen").style.display = "none";
-    document.getElementById("mage-screen").style.display = "none";
-    document.getElementById("ogre-screen").style.display = "none";
-    document.getElementById("end-game-screen").style.display = "none";
-    document.getElementById("knight-screen").style.display = "block";
-  });
-
-   setTimeout(showGameScreenKnight(), 3000);
-  function showGameScreenKnight() {
-    document.getElementById("game-screen").style.display = "block";
-    document.getElementById("mage-screen").style.display = "none";
-    document.getElementById("ogre-screen").style.display = "none";
-    document.getElementById("end-game-screen").style.display = "none";
-    document.getElementById("knight-screen").style.display = "none";
-  }
-
-  mageCard.addEventListener("click", function () {
-    console.log("You chose the mage!");
-    document.getElementById("mage-screen").style.display = "block";
-    document.getElementById("game-screen").style.display = "none";
-    document.getElementById("ogre-screen").style.display = "none";
-    document.getElementById("end-game-screen").style.display = "none";
-    document.getElementById("knight-screen").style.display = "none";
-  });
-
-   ogreCard.addEventListener("click", function () {
-    console.log("You chose the ogre!");
-    document.getElementById("ogre-screen").style.display = "block";
-    document.getElementById("game-screen").style.display = "none";
-    document.getElementById("mage-screen").style.display = "none";
-    document.getElementById("end-game-screen").style.display = "none";
-    document.getElementById("knight-screen").style.display = "none";
-  }); */
 
   restartButton.addEventListener("click", function () {
     restartGame();
