@@ -22,8 +22,13 @@ class EnemyCard {
     enemyHealthContainer.setAttribute("id", "enemy-health-container");
     enemyHealthContainer.innerHTML = `${this.health}`;
 
+    let enemyAttackContainer = document.createElement("div");
+    enemyAttackContainer.setAttribute("id", "enemy-attack-container");
+    enemyAttackContainer.innerHTML = `Attack Power: ${this.attack}`;
+
     enemyContainer.appendChild(enemyNameContainer);
     enemyContainer.appendChild(enemyHealthContainer);
+    enemyContainer.appendChild(enemyAttackContainer);
     enemyContainer.appendChild(enemyImageContainer);
 
     this.elementToAppend.appendChild(enemyContainer);
@@ -37,5 +42,14 @@ class EnemyCard {
       "enemy-health-container"
     );
     enemyCurrentHealth.innerHTML = `${this.health}`;
+  }
+
+  updateCurrentEnemy() {
+    const enemyCurrentHealth = document.getElementById(
+      "enemy-health-container"
+    );
+    if (enemyCurrentHealth === 0) {
+      document.getElementById("this.name").remove();
+    }
   }
 }

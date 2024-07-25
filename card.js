@@ -1,11 +1,20 @@
 class Card {
-  constructor(name, attack, health, elementToAppend, imgSrc, enemy) {
+  constructor(
+    name,
+    attack,
+    health,
+    elementToAppend,
+    imgSrc,
+    enemy,
+    attackImgSrc
+  ) {
     this.name = name;
     this.attack = attack;
     this.health = health;
     this.elementToAppend = elementToAppend;
     this.enemy = enemy;
     this.enemyCardsArray = [];
+    this.attackImgSrc = attackImgSrc;
 
     // Creating card container
     let cardContainer = document.createElement("div");
@@ -33,6 +42,13 @@ class Card {
 
     let attackContainer = document.createElement("div");
     attackContainer.innerHTML = `Attack Power: ${this.attack}`;
+
+    let playerAttackImageDiv = document.getElementById("player-attack-img-div");
+    let playerAttackImage = document.createElement("img");
+    playerAttackImage.src = attackImgSrc;
+    playerAttackImage.setAttribute("class", "player-attack-img");
+    playerAttackImage.setAttribute("id", `${this.name}-player-attack-img-id`);
+    playerAttackImageDiv.appendChild(playerAttackImage);
 
     // Connecting stats to stats container
     statsContainer.appendChild(healthContainer);
@@ -70,6 +86,14 @@ class Card {
 
   damageEnemy() {
     this.enemy.health -= this.attack;
+    const originalMargin = this.element.style.marginBottom;
+    this.element.style.marginBottom = `90px`;
+    document.getElementById("player-attack-img-div").style.display = "flex";
+
+    setTimeout(() => {
+      this.element.style.marginBottom = originalMargin;
+      document.getElementById("player-attack-img-div").style.display = "none";
+    }, 3000);
   }
 
   damagePlayer() {

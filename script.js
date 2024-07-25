@@ -9,11 +9,10 @@ window.onload = function () {
   const ogreCard = document.getElementById("ogre-card");
   const endGameScreen = document.getElementById("end-game-screen");
   const restartButton = document.getElementById("restart-button");
-
-  let game;
-
   const instructionsEvent = document.getElementById("instructions-button");
   const instructionsEl = document.getElementById("instructions");
+
+  let game;
 
   instructionsEvent.addEventListener("click", () => {
     console.log("click");
