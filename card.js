@@ -99,4 +99,10 @@ class Card {
   damagePlayer() {
     this.health -= this.enemy.attack;
   }
+
+  updateCurrentEnemy() {
+    if (this.enemy.health === 0) {
+      document.getElementById(`${this.enemy.name}`).remove();
+    }
+  }
 }

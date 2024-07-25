@@ -167,7 +167,7 @@ class Game {
         card.updatePlayerCardHealth();
         this.updatePlayerCardNumber();
         this.loseGame();
-        updateCurrentEnemy();
+        card.updateCurrentEnemy();
       });
     });
   }

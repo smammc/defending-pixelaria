@@ -43,13 +43,4 @@ class EnemyCard {
     );
     enemyCurrentHealth.innerHTML = `${this.health}`;
   }
-
-  updateCurrentEnemy() {
-    const enemyCurrentHealth = document.getElementById(
-      "enemy-health-container"
-    );
-    if (enemyCurrentHealth === 0) {
-      document.getElementById("this.name").remove();
-    }
-  }
 }
