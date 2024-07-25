@@ -88,7 +88,7 @@ class Card {
     this.enemy.health -= this.attack;
     const originalMargin = this.element.style.marginBottom;
     this.element.style.marginBottom = `90px`;
-    document.getElementById("player-attack-img-div").style.display = "flex";
+    document.getElementById("player-attack-img-div").style.display = "block";
 
     setTimeout(() => {
       this.element.style.marginBottom = originalMargin;

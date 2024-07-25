@@ -151,7 +151,7 @@ class Game {
         imgSrc: "images/Enemies/Dragon-sensei.png.png",
       },
     ];
-
+    this.enemyCards = enemyCards;
     this.generateEnemy(enemyCards, this.enemyCardsArray);
     // prettier-ignore
     this.generateCards(playerCards, this.playerCardsArray, this.enemyCardsArray[0]);
@@ -165,15 +165,17 @@ class Game {
         card.updateEnemyHealth();
         card.damagePlayer();
         card.updatePlayerCardHealth();
+        card.updateCurrentEnemy();
         this.updatePlayerCardNumber();
         this.loseGame();
-        card.updateCurrentEnemy();
+        this.updateEnemyStatus();
+        this.nextEnemy();
       });
     });
   }
 
   loseGame() {
-    if (this.playerCardCounter === 0) {
+    if (this.playerCardCounter < 3) {
       console.log("Player loses");
       this.enemyWins = true;
     }
@@ -182,8 +184,25 @@ class Game {
   updatePlayerCardNumber() {
     let cardContainer = document.getElementById("card-holder");
     let playerCardNumber = cardContainer.children.length;
-    console.log(playerCardNumber);
+    /*  console.log(playerCardNumber); */
     this.playerCardCounter = playerCardNumber;
+  }
+
+  updateEnemyStatus() {
+    let enemyContainer = document.getElementById("enemy-card-holder");
+    let enemyNumber = enemyContainer.children.length;
+    console.log(enemyNumber);
+    this.enemyNumberCounter = enemyNumber;
+  }
+
+  nextEnemy() {
+    if (this.enemyNumberCounter < 1) {
+      console.log("Win!");
+      document.getElementById("win-game-screen").style.display = "block";
+      document.getElementById("end-game-screen").style.display = "none";
+      document.getElementById("game-screen").style.display = "none";
+      /* this.generateEnemy(this.enemyCards, this.enemyCardsArray); */
+    }
   }
 
   /* nextEnemy() {
