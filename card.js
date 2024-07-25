@@ -7,7 +7,8 @@ class Card {
     imgSrc,
     enemyDefeatcounter,
     enemy,
-    attackImgSrc
+    attackImgSrc,
+    specialAttack
   ) {
     this.name = name;
     this.attack = attack;
@@ -16,8 +17,8 @@ class Card {
     (this.enemyDefeatcounter = enemyDefeatcounter),
       (this.enemy = enemy[this.enemyDefeatcounter]);
     this.enemyCardsArray = [];
-
-    /* this.attackImgSrc = attackImgSrc; */
+    this.attackImgSrc = attackImgSrc;
+    this.specialAttack = specialAttack;
 
     // Creating card container
     let cardContainer = document.createElement("div");
@@ -46,16 +47,22 @@ class Card {
     let attackContainer = document.createElement("div");
     attackContainer.innerHTML = `Attack Power: ${this.attack}`;
 
-    let playerAttackImageDiv = document.getElementById("player-attack-img-div");
+    /* let playerAttackImageDiv = document.getElementById("player-attack-img-div"); */
     let playerAttackImage = document.createElement("img");
-    /* playerAttackImage.src = attackImgSrc; */
+    playerAttackImage.src = attackImgSrc;
     playerAttackImage.setAttribute("class", "player-attack-img");
     playerAttackImage.setAttribute("id", `${this.name}-player-attack-img-id`);
-    playerAttackImageDiv.appendChild(playerAttackImage);
+    cardContainer.appendChild(playerAttackImage);
+
+    let specialAttackContainer = document.createElement("div");
+    specialAttackContainer = document.createElement("div");
+    specialAttackContainer.setAttribute("class", "special-attack-container");
+    specialAttackContainer.innerHTML = `${this.specialAttack}`;
 
     // Connecting stats to stats container
     statsContainer.appendChild(healthContainer);
     statsContainer.appendChild(attackContainer);
+    statsContainer.appendChild(specialAttackContainer);
 
     // Appending elements together
     cardContainer.appendChild(nameContainer);
@@ -71,5 +78,14 @@ class Card {
     // prettier-ignore
     const cardHealth = document.getElementById(`${this.name}health-container-id`);
     cardHealth.innerHTML = `Health: ${this.health}`;
+  }
+
+  attackAnimation() {
+    const originalMargin = this.element.style.marginBottom;
+    this.element.style.marginBottom = "80px";
+    setTimeout(() => {
+      this.element.style.marginBottom = originalMargin;
+    }, 2000);
+    console.log(this.element);
   }
 }
