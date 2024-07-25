@@ -11,6 +11,7 @@ window.onload = function () {
   const restartButton = document.getElementById("restart-button");
   const instructionsEvent = document.getElementById("instructions-button");
   const instructionsEl = document.getElementById("instructions");
+  const winGameScreen = document.getElementById("win-game-screen");
 
   let game;
 
@@ -45,5 +46,8 @@ window.onload = function () {
 
   function restartGame() {
     location.reload();
+    winGameScreen.style.display = none;
+    endGameScreen.style.display = none;
+    introScreen.style.display = block;
   }
 };

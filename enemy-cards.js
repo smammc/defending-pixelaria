@@ -46,8 +46,4 @@ class EnemyCard {
     const enemyCurrentHealth = document.getElementById("enemy-health-container");
     enemyCurrentHealth.innerHTML = `${this.health}`;
   }
-
-  getEnemyHealth() {
-    return this.health;
-  }
 }
