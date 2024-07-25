@@ -12,6 +12,8 @@ class Game {
     this.playerCardsArray = [];
     this.enemyCardsArray = [];
     this.enemyDefeatedCounter = 0;
+    this.defeatedPlayerCardsCounter = 0;
+
     this.enemyCards = [
       {
         name: "Blue Dragon",
@@ -66,8 +68,8 @@ class Game {
   }
 
   generateCards(cardsArray, arrayToAppend, enemyObj) {
-    cardsArray.forEach((card, index) => {
-      console.log("Generating card", index);
+    cardsArray.splice(0, 6).forEach((card, index) => {
+      /* console.log("Generating card", index); */
       const newPlayerCard = new Card(
         card.name,
         card.attack,
@@ -76,7 +78,8 @@ class Game {
         card.imgSrc,
         this.enemyDefeatedCounter,
         enemyObj,
-        card.attackImageSrc
+        card.attackImageSrc,
+        card.specialAttack
       );
       arrayToAppend.push(newPlayerCard);
     });
@@ -94,20 +97,10 @@ class Game {
       enemy.attackImageSrc
     );
     arrayToAppend.push(newEnemy);
-    /* this.currentEnemy = newEnemy; */
   }
 
   /*   randomizeCards(arrayLength) {
     return Math.floor(Math.random() * arrayLength);
-  } */
-
-  /*   generateEnemy(cardsArray, arrayToAppend) {
-    cardsArray.forEach((card, index) => {
-      console.log("Generating enemy", index);
-      //prettier-ignore
-      const newEnemy = new EnemyCard(card.name, card.attack, card.health, card.elementToAppend, card.imgSrc);
-      arrayToAppend.push(newEnemy);
-    });
   } */
 
   start() {
@@ -121,6 +114,9 @@ class Game {
         health: 50,
         elementToAppend: this.playerCardsHolder,
         imgSrc: "images/PlayerCards/KnightCard.jpeg",
+        attackImageSrc: "images/PlayerCardAttacks/pixel-sword.png.png",
+        specialAttack:
+          "The Knight is a hard-working unit that will do it's best to protect it's master",
       },
       {
         name: "Fire Mage",
@@ -129,13 +125,18 @@ class Game {
         elementToAppend: this.playerCardsHolder,
         imgSrc: "images/PlayerCards/Fire-mage-card.jpeg",
         attackImageSrc: "images/PlayerCardAttacks/Fireball.png",
+        specialAttack:
+          "This mage has an affinity with fire spells and is fascinated by pyromancy",
       },
       {
         name: "Ogre",
         attack: 10,
-        health: 15,
+        health: 150,
         elementToAppend: this.playerCardsHolder,
         imgSrc: "images/PlayerCards/ogre-card.png",
+        attackImageSrc: "images/PlayerCardAttacks/cleaver-sword-png.png",
+        specialAttack:
+          "The ogre has a lot of health and anger. He yearns to return to his swamp one day",
       },
       {
         name: "Ice Mage",
@@ -144,7 +145,57 @@ class Game {
         elementToAppend: this.playerCardsHolder,
         imgSrc: "images/PlayerCards/Ice-Mage.jpeg",
         attackImageSrc: "images/PlayerCardAttacks/iceSpell.png",
+        specialAttack:
+          "The Ice Mage rejoices in cold weather and uses his spells to keep the summer at bay",
       },
+      {
+        name: "Fire Knight",
+        attack: 10,
+        health: 80,
+        elementToAppend: this.playerCardsHolder,
+        imgSrc: "images/PlayerCards/fire-knight.png",
+        attackImageSrc: "images/PlayerCardAttacks/fire-sword-png.png",
+        specialAttack: "He set his spear on fire",
+      },
+      {
+        name: "Fire Archer",
+        attack: 30,
+        health: 20,
+        elementToAppend: this.playerCardsHolder,
+        imgSrc: "images/PlayerCards/fire-archer.jpeg",
+        attackImageSrc: "images/PlayerCardAttacks/fire-sword-png.png",
+        specialAttack:
+          "The Fire Archer practiced for many decades before being able to shoot fire arrows",
+      },
+
+      {
+        name: "Arcane Mage",
+        attack: 30,
+        health: 40,
+        elementToAppend: this.playerCardsHolder,
+        imgSrc: "images/PlayerCards/Arcane-mage.jpeg",
+        attackImageSrc: "images/PlayerCardAttacks/arcane-spell-png.png",
+        specialAttack: "",
+      },
+
+      {
+        name: "Dragon Trainer",
+        attack: 30,
+        health: 90,
+        elementToAppend: this.playerCardsHolder,
+        imgSrc: "images/PlayerCards/Blue-dragon-trainer.jpeg",
+        specialAttack: "",
+      },
+
+      /*  {
+        name: "Blue Fire Mage",
+        attack: 30,
+        health: 20,
+        elementToAppend: this.playerCardsHolder,
+        imgSrc: "images/Mage.png",
+        attackImageSrc: "images/PlayerCardAttacks/iceSpell.png",
+        specialAttack: "",
+      }, */
     ];
 
     //prettier-ignore
@@ -171,7 +222,7 @@ class Game {
   damageEnemy(playerCard) {
     console.log("Damaging enemy");
     //prettier-ignore
-    this.enemyCardsArray[this.enemyDefeatedCounter].health -=playerCard.attack;
+    this.enemyCardsArray[this.enemyDefeatedCounter].health -= playerCard.attack;
     this.enemyCardsArray[this.enemyDefeatedCounter].updateEnemyHealth();
   }
 
@@ -191,10 +242,26 @@ class Game {
 
   damagePlayerCard(card, index) {
     console.log("Pressed card: ", index);
+    card.attackAnimation();
     card.health -= this.enemyCardsArray[this.enemyDefeatedCounter].attack;
+    //prettier-ignore
+    const attackImg = document.getElementById(`${card.name}-player-attack-img-id`);
+    attackImg.style.display = "flex";
+    /* document.getElementById(`${this.name}health-container-id`).style.color =
+      "red"; */
+    setTimeout(() => {
+      attackImg.style.display = "none";
+      /* document.getElementById(`${this.name}health-container-id`).style.color =
+        "white"; */
+    }, 2000);
     if (card.health <= 0) {
       document.getElementById(`${card.name}`).remove();
       this.playerCardsArray.splice(index, 1);
+      this.defeatedPlayerCardsCounter++;
+      console.log(
+        "defeatedPlayerCardsCounter:",
+        this.defeatedPlayerCardsCounter
+      );
     } else {
       card.updatePlayerCardHealth();
     }
@@ -203,7 +270,7 @@ class Game {
   }
 
   loseGame() {
-    if (this.playerCardsArray.length === 0) {
+    if (this.defeatedPlayerCardsCounter === 4) {
       console.log("Player loses");
     }
   }
