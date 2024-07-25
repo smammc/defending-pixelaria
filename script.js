@@ -24,13 +24,11 @@ window.onload = function () {
   });
 
   startButton.addEventListener("click", function () {
-    console.log("starting");
-    introScreen.style.display = "none"; // maybe should be moved to Game file;
+    introScreen.style.display = "none";
     startGame();
   });
 
   function startGame() {
-    console.log("Starting game");
     game = new Game();
     game.start();
     game.loseGame();
@@ -38,8 +36,6 @@ window.onload = function () {
   }
 
   function battleCycle() {
-    // while (game.enemyWins === false && game.playerWins) {
-    // }
     game.battleCycle();
   }
 

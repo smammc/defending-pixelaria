@@ -67,41 +67,9 @@ class Card {
     this.element = cardContainer;
   }
 
-  updateEnemyHealth() {
-    if (this.enemy.health <= 0) {
-      this.enemy.health = 0;
-      this.enemyDefeatcounter++;
-    }
-    // prettier-ignore
-    const enemyCurrentHealth = document.getElementById("enemy-health-container");
-    enemyCurrentHealth.innerHTML = `${this.enemy.health}`;
-  }
-
   updatePlayerCardHealth() {
-    if (this.health <= 0) {
-      document.getElementById(`${this.name}`).remove();
-    } else {
-      const cardHealth = document.getElementById(
-        `${this.name}health-container-id`
-      );
-      cardHealth.innerHTML = `Health: ${this.health}`;
-    }
-  }
-
-  damageEnemy() {
-    console.log("enemycardarraytest", this.enemyCardsArray);
-    this.enemyCardsArray[this.enemyDefeatcounter].health -= this.attack;
-    const originalMargin = this.element.style.marginBottom;
-    this.element.style.marginBottom = `90px`;
-    document.getElementById("player-attack-img-div").style.display = "flex";
-
-    setTimeout(() => {
-      this.element.style.marginBottom = originalMargin;
-      document.getElementById("player-attack-img-div").style.display = "none";
-    }, 2000);
-  }
-
-  damagePlayer() {
-    this.health -= this.enemy.attack;
+    // prettier-ignore
+    const cardHealth = document.getElementById(`${this.name}health-container-id`);
+    cardHealth.innerHTML = `Health: ${this.health}`;
   }
 }

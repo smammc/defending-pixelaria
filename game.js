@@ -7,9 +7,10 @@ class Game {
     this.endScreen = document.getElementById("end-game-screen");
     this.playerCardsHolder = document.querySelector(".card-inventory");
     this.enemyCardsHolder = document.querySelector(".enemy-card-inventory");
-    this.enemyHealthContainer = document.getElementById(
-      "enemy-health-container"
-    );
+    // prettier-ignore
+    this.enemyHealthContainer = document.getElementById("enemy-health-container");
+    this.playerCardsArray = [];
+    this.enemyCardsArray = [];
     this.enemyDefeatedCounter = 0;
     this.enemyCards = [
       {
@@ -62,12 +63,6 @@ class Game {
         imgSrc: "images/Enemies/Dragon-sensei.png.png",
       },
     ];
-    this.playerCardsArray = [];
-    this.enemyCardsArray = [];
-
-    /* this.enemyWins = false;
-    this.playerWins = false; */
-    this.playerCardCounter = 0;
   }
 
   generateCards(cardsArray, arrayToAppend, enemyObj) {
@@ -84,7 +79,6 @@ class Game {
         card.attackImageSrc
       );
       arrayToAppend.push(newPlayerCard);
-      console.log("consoletest", newPlayerCard);
     });
   }
 
@@ -152,85 +146,65 @@ class Game {
         attackImageSrc: "images/PlayerCardAttacks/iceSpell.png",
       },
     ];
-    console.log("enemyCards", this.enemyCards);
+
     //prettier-ignore
     this.generateEnemy(this.enemyCards[this.enemyDefeatedCounter], this.enemyCardsArray);
-    this.currentEnemy = this.enemyCardsArray[this.enemyDefeatedCounter];
+    // this.currentEnemy = this.enemyCardsArray[this.enemyDefeatedCounter];
 
     // prettier-ignore
-    this.generateCards(playerCards, this.playerCardsArray, this.enemyCards);
+    this.generateCards(playerCards, this.playerCardsArray, this.enemyCardsArray);
     this.playerCardCounter = this.playerCardsArray.length;
   }
 
   battleCycle() {
-    this.playerCardsArray.forEach((card) => {
+    this.playerCardsArray.forEach((card, index) => {
       card.element.addEventListener("click", () => {
-        card.damageEnemy();
-        card.updateEnemyHealth();
-        card.damagePlayer();
-        card.updatePlayerCardHealth();
+        console.log("Player Cards: ", this.playerCardsArray.length);
+        this.damageEnemy(card);
+        this.damagePlayerCard(card, index);
         this.updateCurrentEnemy();
-        this.updatePlayerCardNumber();
         this.loseGame();
-        this.updateEnemyStatus();
-        this.nextEnemy();
-        console.log(this.enemyCardsArray);
       });
     });
   }
 
-  loseGame() {
-    if (this.playerCardCounter < 3) {
-      console.log("Player loses");
-      /* this.enemyWins = true; */
-    }
+  damageEnemy(playerCard) {
+    console.log("Damaging enemy");
+    //prettier-ignore
+    this.enemyCardsArray[this.enemyDefeatedCounter].health -=playerCard.attack;
+    this.enemyCardsArray[this.enemyDefeatedCounter].updateEnemyHealth();
   }
-
-  updatePlayerCardNumber() {
-    let cardContainer = document.getElementById("card-holder");
-    let playerCardNumber = cardContainer.children.length;
-    /*  console.log(playerCardNumber); */
-    this.playerCardCounter = playerCardNumber;
-  }
-
-  /* updateEnemyStatus() {
-    let enemyContainer = document.getElementById("enemy-card-holder");
-    let enemyNumber = enemyContainer.children.length;
-    console.log(enemyNumber);
-    this.enemyNumberCounter = enemyNumber;
-  } */
 
   updateCurrentEnemy() {
-    let enemyHealthContainerValue = parseInt(
-      document.getElementById("enemy-health-container").value
-    );
-    this.currentEnemy.health = enemyHealthContainerValue;
-    if (this.currentEnemy.health === 0) {
-      console.log("current Enemy", this.currentEnemy);
-      document.getElementById(`${this.currentEnemy.name}`).remove();
-
+    if (this.enemyCardsArray[this.enemyDefeatedCounter].health === 0) {
+      // console.log("Enemy lost all its life");
+      // prettier-ignore
+      document.getElementById(`${this.enemyCardsArray[this.enemyDefeatedCounter].name}`).remove();
       this.enemyDefeatedCounter++;
-      //prettier-ignore
-      this.generateEnemy(this.enemyCards[this.enemyDefeatedCounter], this.enemyCardsArray)
-      console.log("counter", this.enemyDefeatedCounter);
+      // //prettier-ignore
+      this.generateEnemy(
+        this.enemyCards[this.enemyDefeatedCounter],
+        this.enemyCardsArray
+      );
     }
-    console.log("currentenemy", this.currentEnemy);
   }
 
-  nextEnemy() {
-    console.log("Win!");
-
-    /*   this.enemy = this.enemyCardsArray[this.enemyDefeatedCounter];
-    console.log("defeatedCounter", this.enemyDefeatedCounter); */
-    //prettier-ignore
-    /* this.generateEnemy(this.enemyCards[this.enemyDefeatedCounter], this.enemyCardsArray); */
+  damagePlayerCard(card, index) {
+    console.log("Pressed card: ", index);
+    card.health -= this.enemyCardsArray[this.enemyDefeatedCounter].attack;
+    if (card.health <= 0) {
+      document.getElementById(`${card.name}`).remove();
+      this.playerCardsArray.splice(index, 1);
+    } else {
+      card.updatePlayerCardHealth();
+    }
+    console.log("How many cards: ", this.playerCardsArray.length);
+    console.log(this.playerCardsArray);
   }
 
-  /* document.getElementById("win-game-screen").style.display = "block";
-      document.getElementById("end-game-screen").style.display = "none";
-      document.getElementById("game-screen").style.display = "none"; */
-
-  /*  nextEnemy() {
-    
-  } */
+  loseGame() {
+    if (this.playerCardsArray.length === 0) {
+      console.log("Player loses");
+    }
+  }
 }

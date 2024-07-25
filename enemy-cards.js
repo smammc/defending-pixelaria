@@ -38,9 +38,16 @@ class EnemyCard {
   // Reduce the value of health by the amount given
 
   updateEnemyHealth() {
-    const enemyCurrentHealth = document.getElementById(
-      "enemy-health-container"
-    );
+    //prettier-ignore
+    if(this.health <= 0){
+      this.health = 0;
+    }
+    // prettier-ignore
+    const enemyCurrentHealth = document.getElementById("enemy-health-container");
     enemyCurrentHealth.innerHTML = `${this.health}`;
+  }
+
+  getEnemyHealth() {
+    return this.health;
   }
 }
