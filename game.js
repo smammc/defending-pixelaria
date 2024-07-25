@@ -10,97 +10,8 @@ class Game {
     this.enemyHealthContainer = document.getElementById(
       "enemy-health-container"
     );
-
-    this.playerCardsArray = [];
-    this.enemyCardsArray = [];
-
-    this.enemyWins = false;
-    this.playerWins = false;
-    this.playerCardCounter = 0;
-  }
-
-  generateCards(cardsArray, arrayToAppend, enemyObj) {
-    cardsArray.forEach((card, index) => {
-      console.log("Generating card", index);
-      const newEnemyCard = new Card(
-        card.name,
-        card.attack,
-        card.health,
-        card.elementToAppend,
-        card.imgSrc,
-        enemyObj,
-        card.attackImageSrc
-      );
-      arrayToAppend.push(newEnemyCard);
-      this.currentEnemy = newEnemyCard;
-    });
-  }
-
-  generateEnemy(enemyArray, arrayToAppend) {
-    const randomIndex = this.randomizeCards(enemyArray.length);
-    const enemy = enemyArray[randomIndex];
-    const newEnemy = new EnemyCard(
-      enemy.name,
-      enemy.attack,
-      enemy.health,
-      enemy.elementToAppend,
-      enemy.imgSrc
-    );
-    arrayToAppend.push(newEnemy);
-    this.currentEnemy = newEnemy;
-  }
-
-  randomizeCards(arrayLength) {
-    return Math.floor(Math.random() * arrayLength);
-  }
-
-  /*   generateEnemy(cardsArray, arrayToAppend) {
-    cardsArray.forEach((card, index) => {
-      console.log("Generating enemy", index);
-      //prettier-ignore
-      const newEnemy = new EnemyCard(card.name, card.attack, card.health, card.elementToAppend, card.imgSrc);
-      arrayToAppend.push(newEnemy);
-    });
-  } */
-
-  start() {
-    this.introScreen.style.display = "none";
-    this.gameScreen.style.display = "block";
-
-    let playerCards = [
-      {
-        name: "Knight",
-        attack: 1,
-        health: 50,
-        elementToAppend: this.playerCardsHolder,
-        imgSrc: "images/PlayerCards/KnightCard.jpeg",
-      },
-      {
-        name: "Fire Mage",
-        attack: 30,
-        health: 30,
-        elementToAppend: this.playerCardsHolder,
-        imgSrc: "images/PlayerCards/Fire-mage-card.jpeg",
-        attackImageSrc: "images/PlayerCardAttacks/Fireball.png",
-      },
-      {
-        name: "Ogre",
-        attack: 10,
-        health: 150,
-        elementToAppend: this.playerCardsHolder,
-        imgSrc: "images/PlayerCards/ogre-card.png",
-      },
-      {
-        name: "Ice Mage",
-        attack: 30,
-        health: 20,
-        elementToAppend: this.playerCardsHolder,
-        imgSrc: "images/PlayerCards/Ice-Mage.jpeg",
-        attackImageSrc: "images/PlayerCardAttacks/iceSpell.png",
-      },
-    ];
-
-    let enemyCards = [
+    this.enemyDefeatedCounter = 0;
+    this.enemyCards = [
       {
         name: "Blue Dragon",
         attack: 10,
@@ -151,10 +62,103 @@ class Game {
         imgSrc: "images/Enemies/Dragon-sensei.png.png",
       },
     ];
-    this.enemyCards = enemyCards;
-    this.generateEnemy(enemyCards, this.enemyCardsArray);
+    this.playerCardsArray = [];
+    this.enemyCardsArray = [];
+
+    /* this.enemyWins = false;
+    this.playerWins = false; */
+    this.playerCardCounter = 0;
+  }
+
+  generateCards(cardsArray, arrayToAppend, enemyObj) {
+    cardsArray.forEach((card, index) => {
+      console.log("Generating card", index);
+      const newPlayerCard = new Card(
+        card.name,
+        card.attack,
+        card.health,
+        card.elementToAppend,
+        card.imgSrc,
+        this.enemyDefeatedCounter,
+        enemyObj,
+        card.attackImageSrc
+      );
+      arrayToAppend.push(newPlayerCard);
+      console.log("consoletest", newPlayerCard);
+    });
+  }
+
+  generateEnemy(enemy, arrayToAppend) {
+    /*  const randomIndex = this.randomizeCards(enemyArray.length);
+      const enemy = enemyArray[randomIndex]; */
+    const newEnemy = new EnemyCard(
+      enemy.name,
+      enemy.attack,
+      enemy.health,
+      enemy.elementToAppend,
+      enemy.imgSrc,
+      enemy.attackImageSrc
+    );
+    arrayToAppend.push(newEnemy);
+    /* this.currentEnemy = newEnemy; */
+  }
+
+  /*   randomizeCards(arrayLength) {
+    return Math.floor(Math.random() * arrayLength);
+  } */
+
+  /*   generateEnemy(cardsArray, arrayToAppend) {
+    cardsArray.forEach((card, index) => {
+      console.log("Generating enemy", index);
+      //prettier-ignore
+      const newEnemy = new EnemyCard(card.name, card.attack, card.health, card.elementToAppend, card.imgSrc);
+      arrayToAppend.push(newEnemy);
+    });
+  } */
+
+  start() {
+    this.introScreen.style.display = "none";
+    this.gameScreen.style.display = "block";
+
+    let playerCards = [
+      {
+        name: "Knight",
+        attack: 1,
+        health: 50,
+        elementToAppend: this.playerCardsHolder,
+        imgSrc: "images/PlayerCards/KnightCard.jpeg",
+      },
+      {
+        name: "Fire Mage",
+        attack: 30,
+        health: 30,
+        elementToAppend: this.playerCardsHolder,
+        imgSrc: "images/PlayerCards/Fire-mage-card.jpeg",
+        attackImageSrc: "images/PlayerCardAttacks/Fireball.png",
+      },
+      {
+        name: "Ogre",
+        attack: 10,
+        health: 15,
+        elementToAppend: this.playerCardsHolder,
+        imgSrc: "images/PlayerCards/ogre-card.png",
+      },
+      {
+        name: "Ice Mage",
+        attack: 30,
+        health: 20,
+        elementToAppend: this.playerCardsHolder,
+        imgSrc: "images/PlayerCards/Ice-Mage.jpeg",
+        attackImageSrc: "images/PlayerCardAttacks/iceSpell.png",
+      },
+    ];
+    console.log("enemyCards", this.enemyCards);
+    //prettier-ignore
+    this.generateEnemy(this.enemyCards[this.enemyDefeatedCounter], this.enemyCardsArray);
+    this.currentEnemy = this.enemyCardsArray[this.enemyDefeatedCounter];
+
     // prettier-ignore
-    this.generateCards(playerCards, this.playerCardsArray, this.enemyCardsArray[0]);
+    this.generateCards(playerCards, this.playerCardsArray, this.enemyCards);
     this.playerCardCounter = this.playerCardsArray.length;
   }
 
@@ -165,11 +169,12 @@ class Game {
         card.updateEnemyHealth();
         card.damagePlayer();
         card.updatePlayerCardHealth();
-        card.updateCurrentEnemy();
+        this.updateCurrentEnemy();
         this.updatePlayerCardNumber();
         this.loseGame();
         this.updateEnemyStatus();
         this.nextEnemy();
+        console.log(this.enemyCardsArray);
       });
     });
   }
@@ -177,7 +182,7 @@ class Game {
   loseGame() {
     if (this.playerCardCounter < 3) {
       console.log("Player loses");
-      this.enemyWins = true;
+      /* this.enemyWins = true; */
     }
   }
 
@@ -188,27 +193,44 @@ class Game {
     this.playerCardCounter = playerCardNumber;
   }
 
-  updateEnemyStatus() {
+  /* updateEnemyStatus() {
     let enemyContainer = document.getElementById("enemy-card-holder");
     let enemyNumber = enemyContainer.children.length;
     console.log(enemyNumber);
     this.enemyNumberCounter = enemyNumber;
+  } */
+
+  updateCurrentEnemy() {
+    let enemyHealthContainerValue = parseInt(
+      document.getElementById("enemy-health-container").value
+    );
+    this.currentEnemy.health = enemyHealthContainerValue;
+    if (this.currentEnemy.health === 0) {
+      console.log("current Enemy", this.currentEnemy);
+      document.getElementById(`${this.currentEnemy.name}`).remove();
+
+      this.enemyDefeatedCounter++;
+      //prettier-ignore
+      this.generateEnemy(this.enemyCards[this.enemyDefeatedCounter], this.enemyCardsArray)
+      console.log("counter", this.enemyDefeatedCounter);
+    }
+    console.log("currentenemy", this.currentEnemy);
   }
 
   nextEnemy() {
-    if (this.enemyNumberCounter < 1) {
-      console.log("Win!");
-      document.getElementById("win-game-screen").style.display = "block";
-      document.getElementById("end-game-screen").style.display = "none";
-      document.getElementById("game-screen").style.display = "none";
-      /* this.generateEnemy(this.enemyCards, this.enemyCardsArray); */
-    }
+    console.log("Win!");
+
+    /*   this.enemy = this.enemyCardsArray[this.enemyDefeatedCounter];
+    console.log("defeatedCounter", this.enemyDefeatedCounter); */
+    //prettier-ignore
+    /* this.generateEnemy(this.enemyCards[this.enemyDefeatedCounter], this.enemyCardsArray); */
   }
 
-  /* nextEnemy() {
-    if ((this.enemyHealthContainer.innerHTML = "0")) {
-      document.getElementById(`${this.enemy.name}`).remove();
-      this.generateEnemy(enemyCards, this.enemyCardsArray);
-    }
+  /* document.getElementById("win-game-screen").style.display = "block";
+      document.getElementById("end-game-screen").style.display = "none";
+      document.getElementById("game-screen").style.display = "none"; */
+
+  /*  nextEnemy() {
+    
   } */
 }

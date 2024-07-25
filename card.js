@@ -5,6 +5,7 @@ class Card {
     health,
     elementToAppend,
     imgSrc,
+    enemyDefeatcounter,
     enemy,
     attackImgSrc
   ) {
@@ -12,9 +13,11 @@ class Card {
     this.attack = attack;
     this.health = health;
     this.elementToAppend = elementToAppend;
-    this.enemy = enemy;
+    (this.enemyDefeatcounter = enemyDefeatcounter),
+      (this.enemy = enemy[this.enemyDefeatcounter]);
     this.enemyCardsArray = [];
-    this.attackImgSrc = attackImgSrc;
+
+    /* this.attackImgSrc = attackImgSrc; */
 
     // Creating card container
     let cardContainer = document.createElement("div");
@@ -45,7 +48,7 @@ class Card {
 
     let playerAttackImageDiv = document.getElementById("player-attack-img-div");
     let playerAttackImage = document.createElement("img");
-    playerAttackImage.src = attackImgSrc;
+    /* playerAttackImage.src = attackImgSrc; */
     playerAttackImage.setAttribute("class", "player-attack-img");
     playerAttackImage.setAttribute("id", `${this.name}-player-attack-img-id`);
     playerAttackImageDiv.appendChild(playerAttackImage);
@@ -67,6 +70,7 @@ class Card {
   updateEnemyHealth() {
     if (this.enemy.health <= 0) {
       this.enemy.health = 0;
+      this.enemyDefeatcounter++;
     }
     // prettier-ignore
     const enemyCurrentHealth = document.getElementById("enemy-health-container");
@@ -85,24 +89,19 @@ class Card {
   }
 
   damageEnemy() {
-    this.enemy.health -= this.attack;
+    console.log("enemycardarraytest", this.enemyCardsArray);
+    this.enemyCardsArray[this.enemyDefeatcounter].health -= this.attack;
     const originalMargin = this.element.style.marginBottom;
     this.element.style.marginBottom = `90px`;
-    document.getElementById("player-attack-img-div").style.display = "block";
+    document.getElementById("player-attack-img-div").style.display = "flex";
 
     setTimeout(() => {
       this.element.style.marginBottom = originalMargin;
       document.getElementById("player-attack-img-div").style.display = "none";
-    }, 3000);
+    }, 2000);
   }
 
   damagePlayer() {
     this.health -= this.enemy.attack;
-  }
-
-  updateCurrentEnemy() {
-    if (this.enemy.health === 0) {
-      document.getElementById(`${this.enemy.name}`).remove();
-    }
   }
 }
