@@ -46,8 +46,8 @@ window.onload = function () {
 
   function restartGame() {
     location.reload();
-    winGameScreen.style.display = none;
-    endGameScreen.style.display = none;
-    introScreen.style.display = block;
+    winGameScreen.style.display = "none";
+    endGameScreen.style.display = "none";
+    introScreen.style.display = "block";
   }
 };
