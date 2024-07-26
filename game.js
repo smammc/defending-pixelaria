@@ -12,9 +12,12 @@ class Game {
     this.playerCardsArray = [];
     this.enemyCardsArray = [];
     this.enemyDefeatedCounter = 0;
-    this.defeatedPlayerCardsCounter = 0;
+    this.winScreen = document.getElementById("win-game-screen");
+    this.defeatedPlayerCardsCounter = 4;
     this.levelCounter = document.getElementById("level-counter-id");
     this.levelCounter.innerHTML = `Level: ${this.enemyDefeatedCounter}`;
+    this.playerLives = document.getElementById("player-lives-counter-id");
+    this.playerLives.innerHTML = `Player Lives: ${this.defeatedPlayerCardsCounter}/4`;
     this.enemyCards = [
       {
         name: "Blue Dragon",
@@ -31,6 +34,49 @@ class Game {
         imgSrc: "images/Enemies/Skeleton-warrior.png",
       },
       {
+        name: "Khaan the Angry",
+        attack: 60,
+        health: 100,
+        elementToAppend: this.enemyCardsHolder,
+        imgSrc: "images/Enemies/angry-orc-png.png",
+      },
+
+      {
+        name: "The Ghoul King",
+        attack: 15,
+        health: 150,
+        elementToAppend: this.enemyCardsHolder,
+        imgSrc: "images/Enemies/Ghoul King.png",
+      },
+      {
+        name: "Dark Dragon Rider",
+        attack: 25,
+        health: 120,
+        elementToAppend: this.enemyCardsHolder,
+        imgSrc: "images/Enemies/enemydragonrider.png",
+      },
+      {
+        name: "Dragon Sensei",
+        attack: 10,
+        health: 300,
+        elementToAppend: this.enemyCardsHolder,
+        imgSrc: "images/Enemies/Dragon-sensei.png.png",
+      },
+      {
+        name: "Water Dragon",
+        attack: 25,
+        health: 80,
+        elementToAppend: this.enemyCardsHolder,
+        imgSrc: "images/Enemies/Water.dragon.png.png",
+      },
+      {
+        name: "Water-Fire Dragon",
+        attack: 30,
+        health: 100,
+        elementToAppend: this.enemyCardsHolder,
+        imgSrc: "images/Enemies/Water-fire-dragon.png.png",
+      },
+      {
         name: "Tobias The Green Dragon",
         attack: 6,
         health: 120,
@@ -45,54 +91,11 @@ class Game {
         imgSrc: "images/Enemies/Green-dragon.png.png",
       },
       {
-        name: "The Ghoul King",
-        attack: 15,
-        health: 150,
-        elementToAppend: this.enemyCardsHolder,
-        imgSrc: "images/Enemies/Ghoul King.png",
-      },
-      {
-        name: "Water Dragon",
-        attack: 25,
-        health: 80,
-        elementToAppend: this.enemyCardsHolder,
-        imgSrc: "images/Enemies/Water.dragon.png.png",
-      },
-      {
-        name: "Dark Dragon Rider",
-        attack: 25,
-        health: 120,
-        elementToAppend: this.enemyCardsHolder,
-        imgSrc: "images/Enemies/enemydragonrider.png",
-      },
-      {
-        name: "Water-Fire Dragon",
-        attack: 30,
-        health: 100,
-        elementToAppend: this.enemyCardsHolder,
-        imgSrc: "images/Enemies/Water-fire-dragon.png.png",
-      },
-      {
         name: "The Elemental Triad",
         attack: 30,
         health: 225,
         elementToAppend: this.enemyCardsHolder,
         imgSrc: "images/Enemies/Elemental-dragons.png.png",
-      },
-      {
-        name: "Khaan the Angry",
-        attack: 60,
-        health: 100,
-        elementToAppend: this.enemyCardsHolder,
-        imgSrc: "images/Enemies/angry-orc-png.png",
-      },
-
-      {
-        name: "Dragon Sensei",
-        attack: 10,
-        health: 300,
-        elementToAppend: this.enemyCardsHolder,
-        imgSrc: "images/Enemies/Dragon-sensei.png.png",
       },
     ];
   }
@@ -180,7 +183,7 @@ class Game {
       {
         name: "Ogre",
         attack: 7,
-        health: 170,
+        health: 110,
         elementToAppend: this.playerCardsHolder,
         imgSrc: "images/PlayerCards/ogre-card.png",
         attackImageSrc: "images/PlayerCardAttacks/cleaver-sword-png.png",
@@ -201,7 +204,7 @@ class Game {
       {
         name: "Blue Dragon Rider",
         attack: 20,
-        health: 120,
+        health: 100,
         elementToAppend: this.playerCardsHolder,
         imgSrc: "images/PlayerCards/blueDragonRider.jpeg",
         attackImageSrc: "images/PlayerCardAttacks/iceSpell.png",
@@ -253,7 +256,7 @@ class Game {
       {
         name: "Richard, the Ogre",
         attack: 25,
-        health: 100,
+        health: 80,
         elementToAppend: this.playerCardsHolder,
         imgSrc: "images/PlayerCards/richardtheogre.jpeg",
         attackImageSrc: "images/PlayerCardAttacks/green-punch-png.png",
@@ -262,7 +265,7 @@ class Game {
       {
         name: "Orangie, the Ogre",
         attack: 25,
-        health: 100,
+        health: 80,
         elementToAppend: this.playerCardsHolder,
         imgSrc: "images/PlayerCards/orangeOgre.jpeg",
         attackImageSrc: "images/PlayerCardAttacks/green-punch-png.png",
@@ -280,7 +283,7 @@ class Game {
       {
         name: "Timothy the Travelling Dwarf",
         attack: 30,
-        health: 90,
+        health: 60,
         elementToAppend: this.playerCardsHolder,
         imgSrc: "images/PlayerCards/traveling-dwarf-mage.jpeg",
         attackImageSrc: "images/PlayerCardAttacks/Fireball.png",
@@ -327,7 +330,7 @@ class Game {
 
       {
         name: "Merlin",
-        attack: 95,
+        attack: 75,
         health: 22,
         elementToAppend: this.playerCardsHolder,
         imgSrc: "images/PlayerCards/purple-robe-wizard.png",
@@ -374,6 +377,7 @@ class Game {
         this.damagePlayerCard(card, index);
         this.updateCurrentEnemy();
         this.loseGame();
+        this.winGame();
       });
     });
   }
@@ -410,7 +414,7 @@ class Game {
         this.enemyCardsArray
       );
     }
-    if (this.enemyDefeatedCounter == 4) {
+    if (this.enemyDefeatedCounter === 4) {
       document.getElementById("enter-the-dungeon").style.display = "block";
       document.getElementById("game-screen").style.backgroundImage =
         "url('images/dungeon-background.jpeg')";
@@ -435,9 +439,10 @@ class Game {
         "white"; */
     }, 1500);
     if (card.health <= 0) {
+      this.defeatedPlayerCardsCounter -= 1;
       document.getElementById(`${card.name}`).remove();
       this.playerCardsArray.splice(index, 1);
-      this.defeatedPlayerCardsCounter++;
+      this.playerLives.innerHTML = `Player Lives: ${this.defeatedPlayerCardsCounter}/4`;
       //prettier-ignore
       console.log("defeatedPlayerCardsCounter:",this.defeatedPlayerCardsCounter);
     } else {
@@ -452,11 +457,28 @@ class Game {
       this.damagePlayerCard(card, this.playerCardsArray.indexOf(card));
       this.updateCurrentEnemy();
       this.loseGame();
+      this.winGame();
     });
   }
 
   loseGame() {
-    if (this.defeatedPlayerCardsCounter === 4) {
+    if (
+      this.defeatedPlayerCardsCounter === 0 ||
+      this.playerCardsArray.length === 0
+    ) {
+      this.introScreen.style.display = "none";
+      this.gameScreen.style.display = "none";
+      this.winScreen.style.display = "none";
+      this.endScreen.style.display = "block";
+      console.log("Player loses");
+    }
+  }
+  winGame() {
+    if (this.enemyDefeatedCounter === 6) {
+      this.introScreen.style.display = "none";
+      this.gameScreen.style.display = "none";
+      this.winScreen.style.display = "block";
+      this.endScreen.style.display = "none";
       console.log("Player loses");
     }
   }
