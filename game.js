@@ -32,14 +32,14 @@ class Game {
       },
       {
         name: "Tobias The Green Dragon",
-        attack: 5,
+        attack: 6,
         health: 120,
         elementToAppend: this.enemyCardsHolder,
         imgSrc: "images/Enemies/Gree-dragon-on-tree.png.png",
       },
       {
         name: "Marcus The Green Dragon",
-        attack: 10,
+        attack: 8,
         health: 120,
         elementToAppend: this.enemyCardsHolder,
         imgSrc: "images/Enemies/Green-dragon.png.png",
@@ -47,7 +47,7 @@ class Game {
       {
         name: "The Ghoul King",
         attack: 15,
-        health: 110,
+        health: 150,
         elementToAppend: this.enemyCardsHolder,
         imgSrc: "images/Enemies/Ghoul King.png",
       },
@@ -61,7 +61,7 @@ class Game {
       {
         name: "Dark Dragon Rider",
         attack: 25,
-        health: 80,
+        health: 120,
         elementToAppend: this.enemyCardsHolder,
         imgSrc: "images/Enemies/enemydragonrider.png",
       },
@@ -75,14 +75,14 @@ class Game {
       {
         name: "The Elemental Triad",
         attack: 30,
-        health: 200,
+        health: 225,
         elementToAppend: this.enemyCardsHolder,
         imgSrc: "images/Enemies/Elemental-dragons.png.png",
       },
       {
         name: "Khaan the Angry",
         attack: 60,
-        health: 90,
+        health: 100,
         elementToAppend: this.enemyCardsHolder,
         imgSrc: "images/Enemies/angry-orc-png.png",
       },
@@ -100,7 +100,7 @@ class Game {
   generateCards(cardsArray, arrayToAppend, enemyObj) {
     const randomIndex = this.randomizeCards(cardsArray.length);
     /*  const enemy = enemyArray[randomIndex]; */
-    cardsArray.splice(randomIndex, randomIndex).forEach((card, index) => {
+    cardsArray.splice(randomIndex, 3).forEach((card, index) => {
       /* console.log("Generating card", index); */
       const newPlayerCard = new Card(
         card.name,
@@ -169,7 +169,7 @@ class Game {
       },
       {
         name: "Fire Mage",
-        attack: 30,
+        attack: 50,
         health: 30,
         elementToAppend: this.playerCardsHolder,
         imgSrc: "images/PlayerCards/Fire-mage-card.jpeg",
@@ -189,8 +189,8 @@ class Game {
       },
       {
         name: "Ice Mage",
-        attack: 40,
-        health: 30,
+        attack: 45,
+        health: 35,
         elementToAppend: this.playerCardsHolder,
         imgSrc: "images/PlayerCards/Ice-Mage.jpeg",
         attackImageSrc: "images/PlayerCardAttacks/iceSpell.png",
@@ -200,8 +200,8 @@ class Game {
 
       {
         name: "Blue Dragon Rider",
-        attack: 30,
-        health: 100,
+        attack: 20,
+        health: 120,
         elementToAppend: this.playerCardsHolder,
         imgSrc: "images/PlayerCards/blueDragonRider.jpeg",
         attackImageSrc: "images/PlayerCardAttacks/iceSpell.png",
@@ -211,8 +211,8 @@ class Game {
 
       {
         name: "Red Dragon Rider",
-        attack: 30,
-        health: 100,
+        attack: 50,
+        health: 80,
         elementToAppend: this.playerCardsHolder,
         imgSrc: "images/PlayerCards/redDragonRider.jpeg",
         attackImageSrc: "images/PlayerCardAttacks/Fireball.png",
@@ -241,8 +241,8 @@ class Game {
 
       {
         name: "Fire Archer",
-        attack: 30,
-        health: 20,
+        attack: 50,
+        health: 40,
         elementToAppend: this.playerCardsHolder,
         imgSrc: "images/PlayerCards/fire-archer.jpeg",
         attackImageSrc: "images/PlayerCardAttacks/fire-sword-png.png",
@@ -279,8 +279,8 @@ class Game {
       },
       {
         name: "Timothy the Travelling Dwarf",
-        attack: 2,
-        health: 250,
+        attack: 30,
+        health: 90,
         elementToAppend: this.playerCardsHolder,
         imgSrc: "images/PlayerCards/traveling-dwarf-mage.jpeg",
         attackImageSrc: "images/PlayerCardAttacks/Fireball.png",
@@ -288,18 +288,18 @@ class Game {
       },
       {
         name: "Swordblade rogue",
-        attack: 2,
-        health: 250,
+        attack: 80,
+        health: 55,
         elementToAppend: this.playerCardsHolder,
-        imgSrc: "images/PlayerCardAttacks/arcane-spell-png.png",
-        attackImageSrc: "",
+        imgSrc: "images/PlayerCards/blueSword-rogue.jpeg",
+        attackImageSrc: "images/PlayerCardAttacks/arcane-spell-png.png",
         specialAttack: "He owns a magic blue sword",
       },
 
       {
         name: "SpellBlade Wizard",
-        attack: 2,
-        health: 250,
+        attack: 60,
+        health: 60,
         elementToAppend: this.playerCardsHolder,
         imgSrc: "images/PlayerCards/spellsword-mage.jpeg",
         attackImageSrc: "images/PlayerCardAttacks/arcane-spell-png.png",
@@ -317,8 +317,8 @@ class Game {
       },
       {
         name: "Magic Rogue",
-        attack: 30,
-        health: 90,
+        attack: 90,
+        health: 40,
         elementToAppend: this.playerCardsHolder,
         imgSrc: "images/PlayerCards/magic-rogue.jpeg",
         attackImageSrc: "images/PlayerCardAttacks/arcane-spell-png.png",
@@ -327,12 +327,12 @@ class Game {
 
       {
         name: "Merlin",
-        attack: 50,
-        health: 60,
+        attack: 95,
+        health: 22,
         elementToAppend: this.playerCardsHolder,
         imgSrc: "images/PlayerCards/purple-robe-wizard.png",
         attackImageSrc: "images/PlayerCardAttacks/fire-sword-png.png",
-        specialAttack: "As wise as his beard is big",
+        specialAttack: "As wise as he is old and frail",
       },
 
       {
@@ -409,6 +409,14 @@ class Game {
         this.enemyCards[this.enemyDefeatedCounter],
         this.enemyCardsArray
       );
+    }
+    if (this.enemyDefeatedCounter == 4) {
+      document.getElementById("enter-the-dungeon").style.display = "block";
+      document.getElementById("game-screen").style.backgroundImage =
+        "url('images/dungeon-background.jpeg')";
+      setTimeout(() => {
+        document.getElementById("enter-the-dungeon").style.display = "none";
+      }, 3000);
     }
   }
 

@@ -46,6 +46,20 @@
   background-image: url("https://preview.redd.it/ancient-archway-in-a-meadow-v0-3vm8ot8l599a1.gif?format=png8&s=f1f02ee85c0ea6f81c0ef750349f00ca3ad63f69");
 }
 
+#enter-the-dungeon {
+  background-color: rgb(16, 16, 79);
+  font-size: 35px;
+  text-align: center;
+  display: none;
+  top: 45%;
+  position: absolute;
+  right: 25%;
+  left: 25%;
+  color: white;
+  padding: 30px;
+  z-index: 10;
+}
+
 .level-counter {
   font-size: 16px;
   border: 3.5px solid peru;
