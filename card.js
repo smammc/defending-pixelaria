@@ -42,9 +42,11 @@ class Card {
 
     let healthContainer = document.createElement("div");
     healthContainer.innerHTML = `Health: ${this.health}`;
+    healthContainer.setAttribute("class", "player-card-health-container");
     healthContainer.setAttribute("id", `${this.name}health-container-id`);
 
     let attackContainer = document.createElement("div");
+    attackContainer.setAttribute("class", "attack-container-class");
     attackContainer.innerHTML = `Attack Power: ${this.attack}`;
 
     /* let playerAttackImageDiv = document.getElementById("player-attack-img-div"); */
@@ -86,6 +88,5 @@ class Card {
     setTimeout(() => {
       this.element.style.marginBottom = originalMargin;
     }, 2000);
-    console.log(this.element);
   }
 }
