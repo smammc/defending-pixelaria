@@ -84,7 +84,7 @@ class Card {
 
   attackAnimation() {
     const originalMargin = this.element.style.marginBottom;
-    this.element.style.marginBottom = "80px";
+    this.element.style.marginBottom = "65px";
     setTimeout(() => {
       this.element.style.marginBottom = originalMargin;
     }, 2000);
