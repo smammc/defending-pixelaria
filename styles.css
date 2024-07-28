@@ -60,6 +60,10 @@
   z-index: 10;
 }
 
+#medieval-music {
+  display: none;
+}
+
 #player-lives-counter-id {
   font-size: 16px;
   border: 3.5px solid peru;

@@ -9,11 +9,13 @@ class Game {
     this.enemyCardsHolder = document.querySelector(".enemy-card-inventory");
     // prettier-ignore
     this.enemyHealthContainer = document.getElementById("enemy-health-container");
+
     this.playerCardsArray = [];
     this.enemyCardsArray = [];
     this.enemyDefeatedCounter = 0;
     this.winScreen = document.getElementById("win-game-screen");
     this.defeatedPlayerCardsCounter = 4;
+
     this.levelCounter = document.getElementById("level-counter-id");
     this.levelCounter.innerHTML = `Level: ${this.enemyDefeatedCounter}`;
     this.playerLives = document.getElementById("player-lives-counter-id");
@@ -103,7 +105,7 @@ class Game {
   generateCards(cardsArray, arrayToAppend, enemyObj) {
     const randomIndex = this.randomizeCards(cardsArray.length);
     /*  const enemy = enemyArray[randomIndex]; */
-    cardsArray.splice(randomIndex, 3).forEach((card, index) => {
+    cardsArray.splice(randomIndex, 4).forEach((card, index) => {
       /* console.log("Generating card", index); */
       const newPlayerCard = new Card(
         card.name,
@@ -158,6 +160,8 @@ class Game {
   start() {
     this.introScreen.style.display = "none";
     this.gameScreen.style.display = "block";
+
+    document.getElementById("medieval-music").play();
 
     this.playerCards = [
       {
@@ -431,12 +435,8 @@ class Game {
     //prettier-ignore
     const attackImg = document.getElementById(`${card.name}-player-attack-img-id`);
     attackImg.style.display = "flex";
-    /* document.getElementById(`${this.name}health-container-id`).style.color =
-      "red"; */
     setTimeout(() => {
       attackImg.style.display = "none";
-      /* document.getElementById(`${this.name}health-container-id`).style.color =
-        "white"; */
     }, 1500);
     if (card.health <= 0) {
       this.defeatedPlayerCardsCounter -= 1;
